@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liveneo.plat.hibernate.dao">
+	<class
+		name="Satscore"
+		table="SATSCORE"
+	>
+		<meta attribute="sync-DAO">true</meta>
+		<id
+			name="Id"
+			type="integer"
+			column="PK_SATSCORE"
+		>
+			<generator class="native"/>
+		</id>
+
+		<property
+			name="Ucid"
+			column="UCID"
+			type="string"
+			not-null="true"
+			length="50"
+		/>
+		<property
+			name="Callerno"
+			column="CALLERNO"
+			type="string"
+			not-null="false"
+			length="24"
+		/>
+		<property
+			name="Agentid"
+			column="AGENTID"
+			type="string"
+			not-null="false"
+			length="8"
+		/>
+		<property
+			name="Extno"
+			column="EXTNO"
+			type="string"
+			not-null="false"
+			length="8"
+		/>
+		<property
+			name="Svctime"
+			column="SVCTIME"
+			type="string"
+			not-null="false"
+			length="24"
+		/>
+		<property
+			name="Svcpoint"
+			column="SVCPOINT"
+			type="string"
+			not-null="false"
+			length="2"
+		/>
+		<property
+			name="Vduid"
+			column="VDUID"
+			type="string"
+			not-null="false"
+			length="100"
+		/>
+		<property
+			name="N1"
+			column="N1"
+			type="string"
+			not-null="false"
+			length="100"
+		/>
+		<property
+			name="N2"
+			column="N2"
+			type="string"
+			not-null="false"
+			length="100"
+		/>
+		<property
+			name="N3"
+			column="N3"
+			type="string"
+			not-null="false"
+			length="100"
+		/>
+
+
+	</class>	
+</hibernate-mapping>

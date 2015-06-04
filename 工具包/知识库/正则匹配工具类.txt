@@ -1,0 +1,120 @@
+博客园
+JAVA自动生成正则表达式工具类
+经过很久的努力，终于完成了JAVA自动生成正则表达式工具类。还记得之前需要正则，老是从网上找吗？找了想修改也不会修改。现在不用再为此烦恼了，使用此生成类轻松搞定所有正则表达式。赶快在同事面前炫一下吧。
+本正则表达式工具类，也整理了很多常用校验。例如：匹配汉字、行首、行尾、匹配除换行外的所有字符、匹配数字、匹配大写字母、匹配小写字母、匹配大小写字母、匹配小写字母和数字、匹配大写字母和数字、匹配大小写字母和数字、匹配大小写字母、数字、下划线、匹配一个单词的边界、匹配一个非单词的边界、匹配任何空白字符，包括空格、制表符、换页符等。与 [ \f\n\r\t\v] 等效。、匹配任何非空白字符。与 [^ \f\n\r\t\v] 等效。、匹配任何字类字符，包括下划线。与"[A-Za-z0-9_]"等效。、与任何非单词字符匹配。与"[^A-Za-z0-9_]"等效。
+本工具类，你可以使用append()追加规则，or()或一个其他规则，repeat设置重复规则，让你方便生成正则表达式。
+     下面为一个生成邮箱正则的例子，匹配规则为：邮箱名允许大小写字母数字下划线，域名可以含数字、大小写字母、点、下划线，如果有些邮箱要求不同，可自行修改。
+//验证邮箱总规则。 //邮箱名允许大小写字母数字下划线，域名可以含数字、大小写字母、点、下划线，如果有些邮箱要求不同，可自行修改。
+RegexUtil r=newRegexUtil(); //@之前规则
+RegexUtil before=newRegexUtil(RegexUtil.letterAndNumAndUnderLine);//允许大小写字母和下划线
+before.repeatOneOrMore();//允许重复1-N次
+r.append(before);//将@之前的规则追加到总规则
+r.append("@");//追加上@符号 //@之后到最后一个域名点之前的规则
+RegexUtil after=newRegexUtil(RegexUtil.letterAndNumAndUnderLine);//允许大小写字母和下划线
+after.or(".");//允许点，防止邮箱二级域名,如：@vip.qq.com
+after.or("-");//域名中允许横线
+after.repeatOneOrMore();//允许重复1-N次
+r.append(after);//追加到总规则 //顶级域名前的点
+r.append("."); //顶级域名的规则
+RegexUtil last=newRegexUtil(RegexUtil.lowLetter);//顶级域名只允许小写字母
+last.repeatOneOrMore();////允许重复1-N次
+r.append(last); System.out.println(r);//打印总正则：[a-zA-Z0-9_]+@[a-zA-Z0-9_\.-]+\.[a-z]+
+Pattern p =Pattern.compile(r.toString()); Matcher m = p.matcher("862990787@qq.com"); System.out.println(m.matches());
+最后我贴出来这个自动生成正则的工具类，欢迎大家拍砖啊！
+/**
+* 正则表达式生成工具类 * @author朱志杰 QQ:862990787 */
+publicclassRegexUtil { //记录拼接的表达式
+privateStringBuffer sb=newStringBuffer(); //正则表达式的特殊字符，需要进行转义处理
+privateString expectChar=".+*\\$^?{}()[]\\|"; /**
+* 匹配汉字 */
+publicstaticRegexUtil chinese=newRegexUtil("[\u4e00-\u9fa5]"); /**
+* 行首 */
+publicstaticRegexUtil lineHead=newRegexUtil("$"); /**
+* 行尾 */
+publicstaticRegexUtil lineTail=newRegexUtil("^"); /**
+* 匹配除换行外的所有字符 */
+publicstaticRegexUtil anyButLine=newRegexUtil("."); /**
+* 匹配数字 */
+publicstaticRegexUtil num=newRegexUtil("[0-9]"); /**
+* 匹配大写字母 */
+publicstaticRegexUtil upperLetter=newRegexUtil("[A-Z]"); /**
+* 匹配小写字母 */
+publicstaticRegexUtil lowLetter=newRegexUtil("[a-z]"); /**
+* 匹配大小写字母 */
+publicstaticRegexUtil letter=newRegexUtil("[a-zA-Z]"); /**
+* 匹配小写字母和数字 */
+publicstaticRegexUtil lowLetterAndNum=newRegexUtil("[a-z0-9]"); /**
+* 匹配大写字母和数字 */
+publicstaticRegexUtil upperLetterAndNum=newRegexUtil("[A-Z0-9]"); /**
+* 匹配大小写字母和数字 */
+publicstaticRegexUtil letterAndNum=newRegexUtil("[a-zA-Z0-9]"); /**
+* 匹配大小写字母、数字、下划线 */
+publicstaticRegexUtil letterAndNumAndUnderLine=newRegexUtil("[a-zA-Z0-9_]"); /**
+* 匹配一个单词的边界 */
+publicstaticRegexUtil boundary=newRegexUtil("\\b"); /**
+* 匹配一个非单词的边界 */
+publicstaticRegexUtil notBoundary=newRegexUtil("\\B"); /**
+* 匹配任何空白字符，包括空格、制表符、换页符等。与 [ \f\n\r\t\v] 等效。 */
+publicstaticRegexUtil blank=newRegexUtil("\\s"); /**
+* 匹配任何非空白字符。与 [^ \f\n\r\t\v] 等效。 */
+publicstaticRegexUtil notBlank=newRegexUtil("\\s"); /**
+* 匹配任何字类字符，包括下划线。与"[A-Za-z0-9_]"等效。 */
+publicstaticRegexUtil anyChar=newRegexUtil("\\w"); /**
+* 与任何非单词字符匹配。与"[^A-Za-z0-9_]"等效。 */
+publicstaticRegexUtil notAnyChar=newRegexUtil("\\W"); publicRegexUtil(){ } /**
+* 构造时就传入一个正则表达式 * @paramregex 正则表达式 */
+publicRegexUtil(String regex){ sb=newStringBuffer(regex); } /**
+* 构造时就传入一个RegexUtil * @paramregex 正则表达式 */
+publicRegexUtil(RegexUtil regex){ sb=newStringBuffer(regex.toString()); } /**
+* 执行最短匹配 */
+publicvoidminMatch(){ //判断最外面是否是中括号,不是加上中括号
+sb=addMidBracketIfNo(sb); sb.append("?"); } /**
+* 重复0-N次，等效于 {0,}。 */
+publicvoidrepeatZeroOrMore(){ //判断最外面是否是中括号,不是加上中括号
+sb=addMidBracketIfNo(sb); sb.append("*"); } /**
+* 重复0或1次，等效于 {0,1}或?。 */
+publicvoidrepeatZeroOrOne(){ //判断最外面是否是中括号,不是加上中括号
+sb=addMidBracketIfNo(sb); sb.append("?"); } /**
+* 重复1-N次，等效于 {1,}。 */
+publicvoidrepeatOneOrMore(){ //判断最外面是否是中括号,不是加上中括号
+sb=addMidBracketIfNo(sb); sb.append("+"); } /**
+* 重复num次 * @paramnum 次数 */
+publicvoidrepeat(intnum){ //判断最外面是否是中括号,不是加上中括号
+sb=addMidBracketIfNo(sb); sb.append("{"+num+"}"); } /**
+* 重复min-max次 * @parammin 最小 * @parammax 最大 */
+publicvoidrepeat(intmin,intmax){ //判断最外面是否是中括号,不是加上中括号
+sb=addMidBracketIfNo(sb); sb.append("{"+min+","+max+"}"); } /**
+* 至少重复num次 * @paramnum 次数 */
+publicvoidrepeatMin(intnum){ //判断最外面是否是中括号,不是加上中括号
+sb=addMidBracketIfNo(sb); sb.append("{"+num+",}"); } /**
+* 若字符串两边不是中括号增加上中括号 * @paramsb 原StringBuffer * @returnStringBuffer */
+privateStringBuffer addMidBracketIfNo(StringBuffer sb) { if(!chkMidBracket(sb)){ returnaddMinBrackets(sb); }else{ returnsb; } } /**
+* 字符串两边加上() * @paramstr 字符串 * @returnStringBuffer */
+privateStringBuffer addMinBrackets(StringBuffer str){ returnnewStringBuffer("("+str+")"); } /**
+* 字符串两边加上[] * @paramstr 字符串 * @returnStringBuffer */
+privateStringBuffer addMidBrackets(StringBuffer str){ returnnewStringBuffer("["+str+"]"); } /**
+* 去掉字符串两边的[] * @paramstr 字符串 * @returnString */
+privateString removeMidBrackets(StringBuffer str){ returnstr.toString().replaceAll("^\\[", "").replaceAll("\\]$", ""); } /**
+* 对字符串里面的特殊字符进行处理 * @paramstr 源字符串 * @returnString */
+privateString handleExpectChar(String str){ StringBuffer sbTemp=newStringBuffer(); char[] arr=str.toCharArray(); for(inti=0 ; i<arr.length ; i++){ if(expectChar.indexOf(arr[i])!=-1){ sbTemp.append("\\"+arr[i]); }else{ sbTemp.append(arr[i]); } } returnsbTemp.toString(); } /**
+* 判断字符串最外围是否为中括号 * @paramsb * @returnboolean 是 true，否则 false。 */
+privatebooleanchkMidBracket(StringBuffer sb){ if("[".equals(sb.substring(0, 1)) && "]".equals(sb.substring(sb.length()-1))){ returntrue; }else{ returnfalse; } } /**
+* 追加一个正则 * @paramre 正则 */
+publicvoidappend(RegexUtil re){ sb.append(re.toString()); } /**
+* 追加一个正则表达式 * @paramString 正则表达式 */
+publicvoidappend(String re){ sb.append(handleExpectChar(re)); } /**
+* 或一个正则 * @paramre 正则 */
+publicvoidor(RegexUtil re){ or(re.toString()); } /**
+* 或一个正则表达式 * @paramString 正则表达式 */
+publicvoidor(String re){ //最外层为中括号
+if(chkMidBracket(sb)){ //首先去掉两边的中括号
+sb=newStringBuffer(removeMidBrackets(sb)); } if(re.length()>1){ //字符串用|
+sb.append("|"+handleExpectChar(re)); }else{ //非字符串直接追加
+sb.append(handleExpectChar(re)); } //追加上中括号
+sb=newStringBuffer(addMidBrackets(sb)); } /**
+* 对自己进行否处理 */
+publicvoidnot(){ sb=newStringBuffer("[^"+sb+"]"); } /**
+* 返回正则表达式 */
+publicString toString(){ returnsb.toString(); } }
+看了，请务必回复！！！这是对我的支持，我会继续努力！
+延伸阅读：

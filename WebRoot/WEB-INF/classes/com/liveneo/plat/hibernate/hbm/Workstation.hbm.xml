@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liveneo.plat.hibernate.dao">
+	<class
+		name="Workstation"
+		table="WORKSTATION"
+	>
+		<meta attribute="sync-DAO">true</meta>
+		<id
+			name="Id"
+			type="integer"
+			column="PK_WORKSTATION"
+		>
+			<generator class="native"/>
+		</id>
+
+		<property
+			name="Factorynamecn"
+			column="FACTORYNAMECN"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+		<property
+			name="Factorynameen"
+			column="FACTORYNAMEEN"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+		<property
+			name="Phoneno"
+			column="PHONENO"
+			type="string"
+			not-null="false"
+			length="30"
+		/>
+		<property
+			name="Wslinkman"
+			column="WSLINKMAN"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+		<property
+			name="Wsemail"
+			column="WSEMAIL"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+		<property
+			name="Wsaddr"
+			column="WSADDR"
+			type="string"
+			not-null="false"
+			length="500"
+		/>
+		<property
+			name="Remark"
+			column="REMARK"
+			type="string"
+			not-null="false"
+			length="500"
+		/>
+		<property
+			name="Temp1"
+			column="TEMP1"
+			type="string"
+			not-null="false"
+			length="500"
+		/>
+		<property
+			name="Temp2"
+			column="TEMP2"
+			type="string"
+			not-null="false"
+			length="500"
+		/>
+		<property
+			name="Temp3"
+			column="TEMP3"
+			type="string"
+			not-null="false"
+			length="500"
+		/>
+		<property
+			name="Temp4"
+			column="TEMP4"
+			type="string"
+			not-null="false"
+			length="500"
+		/>
+	
+
+		<set name="Userinfos" inverse="true">
+			<key column="PK_WORKSTATION"/>
+			<one-to-many class="Userinfo"/>
+		</set>
+
+
+	</class>	
+</hibernate-mapping>

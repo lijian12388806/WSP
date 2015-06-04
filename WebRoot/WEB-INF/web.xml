@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<!--参数 配置-->
+	<context-param>
+		<param-name>webAppRootKey</param-name>
+		<param-value>ipccwp.root</param-value>
+	</context-param>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			/WEB-INF/classes/config/spring/applicationContext*.xml
+		</param-value>
+	</context-param>
+	<!-- dwr配置 -->
+	<servlet>
+		<servlet-name>dwr</servlet-name>
+		<servlet-class>uk.ltd.getahead.dwr.DWRServlet</servlet-class>
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<description>使用服务器推技术(反转AJAX)</description>
+			<param-name>activeReverseAjaxEnabled</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>initApplicationScopeCreatorsAtStartup</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>maxWaitAfterWrite</param-name>
+			<param-value>100</param-value>
+		</init-param>
+
+		<load-on-startup>4</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>dwr</servlet-name>
+		<url-pattern>/dwr/*</url-pattern>
+	</servlet-mapping>
+	<!-- log4j -->
+	<listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener>
+	<!-- 用于初始化spring的监听 -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<!-- 初始化系统参数的监听 -->
+	<listener>
+		<description>initSysPara</description>
+		<listener-class>com.liveneo.plat.listener.SystemInitListener</listener-class>
+	</listener>
+	<listener>
+		<description>OnlineListListener</description>
+		<listener-class>
+			com.liveneo.plat.listener.OnlineListListener
+		</listener-class>
+	</listener>
+	<!-- 定时任务 -->
+	<listener>
+		<description>timerTaskListener</description>
+		<listener-class>com.liveneo.plat.listener.TimerTaskListener</listener-class>
+	</listener>
+	<!-- 权限过滤配置 -->
+	<filter>
+		<filter-name>Sessionfilter</filter-name>
+		<filter-class>com.liveneo.plat.filter.SessionFilter</filter-class>
+		<init-param>
+			<param-name>freePages</param-name>
+			<param-value>
+				login.jsp;login.action;logout.action;email;html;getIpccReport;
+			</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>Sessionfilter</filter-name>
+		<url-pattern>*.action</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>Sessionfilter</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+	</filter-mapping>
+	<!-- OpenSessionInViewFilter用于session关闭后 页面 访问数据，hibernate延迟加载  -->
+	<filter>
+		<filter-name>OpenSessionInView</filter-name>
+		<filter-class>
+			org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
+		<init-param>
+			<param-name>sessionFactoryBeanName</param-name>
+			<param-value>sessionFactory</param-value>
+		</init-param>
+		<init-param>
+			<param-name>singleSession</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>OpenSessionInView</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- 设置监听加载上下文 -->
+	<filter>
+		<filter-name>struts2</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.FilterDispatcher</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter>
+		<filter-name>struts-cleanup</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.ActionContextCleanUp</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>struts-cleanup</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!--编码过滤配置-->
+	<filter>
+		<filter-name>lcpFilter</filter-name>
+		<filter-class>com.liveneo.plat.filter.SetCharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>lcpFilter</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+	</filter-mapping>
+	<!-- 列表组件过滤配置-->
+	<filter>
+		<filter-name>ResponseOverrideFilter</filter-name>
+		<filter-class>org.displaytag.filter.ResponseOverrideFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>ResponseOverrideFilter</filter-name>
+		<url-pattern>*.action</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>ResponseOverrideFilter</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+	</filter-mapping>
+	<!-- 文件压缩-->
+	<filter>
+		<filter-name>GZIPFilter</filter-name>
+		<filter-class>com.tacitknowledge.filters.gzipfilter.GZIPFilter</filter-class>
+	</filter>
+	<!-- tk-filter begin-->
+	<!-- GZIPFilter Definition -->
+	<filter>
+		<filter-name>GzipFilter</filter-name>
+		<filter-class>com.tacitknowledge.filters.gzipfilter.GZIPFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>GzipFilter</filter-name>
+		<url-pattern>*.js</url-pattern>
+	</filter-mapping>
+
+	<filter-mapping>
+		<filter-name>GzipFilter</filter-name>
+		<url-pattern>*.jpg</url-pattern>
+	</filter-mapping>
+
+	<filter-mapping>
+		<filter-name>GzipFilter</filter-name>
+		<url-pattern>*.gif</url-pattern>
+	</filter-mapping>
+
+	<filter-mapping>
+		<filter-name>GzipFilter</filter-name>
+		<url-pattern>*.png</url-pattern>
+	</filter-mapping>
+
+	<filter-mapping>
+		<filter-name>GzipFilter</filter-name>
+		<url-pattern>*.css</url-pattern>
+	</filter-mapping>
+
+	<filter-mapping>
+		<filter-name>GzipFilter</filter-name>
+		<url-pattern>*.html</url-pattern>
+	</filter-mapping>
+
+	<!-- CacheFilter Definition -->
+	<filter>
+		<filter-name>CacheFilter</filter-name>
+		<filter-class>com.tacitknowledge.filters.cache.CacheHeaderFilter</filter-class>
+	</filter>
+
+	<!-- tk-filter end-->
+	<!-- 标签引用配置-->
+	<jsp-config>
+		<taglib>
+			<taglib-uri>http://java.sun.com/jstl/core</taglib-uri>
+			<taglib-location>/WEB-INF/c.tld</taglib-location>
+		</taglib>
+		<jsp-property-group>
+			<url-pattern>*.jsp</url-pattern>
+			<el-ignored>false</el-ignored>
+		</jsp-property-group>
+	</jsp-config>
+	<session-config>
+		<session-timeout>960</session-timeout>
+	</session-config>
+	<welcome-file-list>
+		<welcome-file>/WEB-INF/jsp/login.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>

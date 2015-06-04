@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+
+	<bean id="dataSource" class="com.liveneo.plat.dsutil.DataSource">
+		<property name="driver" value="com.mysql.jdbc.Driver" />
+		<property name="driverUrl"
+			value="jdbc:mysql://172.16.5.185:3306/db_crm?useUnicode=true&amp;characterEncoding=UTF-8" />
+		<property name="user" value="ipcc" />
+		<property name="password" value="AxbJyZaX" />
+		<property name="alias" value="implat" />
+		<property name="maximumConnectionCount" value="20" />
+		<property name="minimumConnectionCount" value="5" />
+		<property name="maximumActiveTime" value="300000" />
+		<property name="prototypeCount" value="0" />
+		<property name="simultaneousBuildThrottle" value="50" />
+
+	</bean>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLInnoDBDialect
+				</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.format_sql">false</prop>
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+				<prop key="hibernate.jdbc.fetch_size">50</prop>
+				<prop key="hibernate.jdbc.batch_size">10</prop>
+				<prop key="use_streams_for_binary">true</prop>
+				<prop key="hibernate.cache.provider_class">
+					org.hibernate.cache.EhCacheProvider
+				</prop>
+
+				<prop key="hibernate.generate_statistics">true</prop>
+				<prop key="hibernate.connection.release_mode">
+					auto
+				</prop>
+				<prop key="hibernate.show_sql">false</prop>
+<!--				<prop key="hibernate.hbm2ddl.auto">create</prop>-->
+			</props>
+		</property>
+		<property name="mappingDirectoryLocations">
+			<list>
+				<value>classpath*:/com/liveneo/plat/hibernate/hbm</value>
+			</list>
+		</property>
+	</bean>
+	<!-- Hibernate  transactionManager-->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>
+	</bean>
+	<!-- Hibernate  baseTransaction-->
+	<bean id="baseTransactionProxy"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean"
+		abstract="true" lazy-init="true">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="proxyTargetClass" value="true" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+				<prop key="set*">PROPAGATION_REQUIRED</prop>
+				<prop key="update*">PROPAGATION_REQUIRED</prop>
+				<prop key="add*">PROPAGATION_REQUIRED</prop>
+				<prop key="save*">PROPAGATION_REQUIRED</prop>
+				<prop key="del*">PROPAGATION_REQUIRED</prop>
+				<prop key="submit*">PROPAGATION_REQUIRED</prop>
+				<prop key="excute*">PROPAGATION_REQUIRED</prop>
+				<prop key="addLog">PROPAGATION_REQUIRES_NEW</prop>
+				<prop key="*">PROPAGATION_REQUIRED,readOnly</prop>
+			</props>
+		</property>
+	</bean>
+	<!-- DAO -->
+	<bean name="bdDictDAO" class="com.liveneo.plat.hibernate.dao.dao.BdDictDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean name="bdDictdetailDAO" class="com.liveneo.plat.hibernate.dao.dao.BdDictdetailDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean name="userinfoDAO" class="com.liveneo.plat.hibernate.dao.dao.UserinfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean name="menuinfoDAO" class="com.liveneo.plat.hibernate.dao.dao.MenuinfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean name="uploadfileDAO" class="com.liveneo.plat.hibernate.dao.dao.UploadfileDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean name="logmsgDAO" class="com.liveneo.plat.hibernate.dao.dao.LogmsgDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean name="bdRoleDAO" class="com.liveneo.plat.hibernate.dao.dao.BdRoleDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean name="bdRolemenuDAO" class="com.liveneo.plat.hibernate.dao.dao.BdRolemenuDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean name="bdUserinforoleDAO" class="com.liveneo.plat.hibernate.dao.dao.BdUserinforoleDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean name="calldetailDAO" class="com.liveneo.plat.hibernate.dao.dao.CalldetailDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean name="customerinfoDAO" class="com.liveneo.plat.hibernate.dao.dao.CustomerinfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean name="cusphonelistDAO" class="com.liveneo.plat.hibernate.dao.dao.CusphonelistDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean name="departmentDAO" class="com.liveneo.plat.hibernate.dao.dao.DepartmentDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean name="ivrvoiceDAO" class="com.liveneo.plat.hibernate.dao.dao.IvrvoiceDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean name="satscoreDAO" class="com.liveneo.plat.hibernate.dao.dao.SatscoreDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean name="workingcalendarDAO" class="com.liveneo.plat.hibernate.dao.dao.WorkingcalendarDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean name="workorderDAO" class="com.liveneo.plat.hibernate.dao.dao.WorkorderDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean name="workstationDAO" class="com.liveneo.plat.hibernate.dao.dao.WorkstationDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean name="orderdealinfoDAO" class="com.liveneo.plat.hibernate.dao.dao.OrderdealinfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean name="bdJobmsgDAO" class="com.liveneo.plat.hibernate.dao.dao.BdJobmsgDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<!-- crm -->
+	<bean name="crmWoDAO" class="com.liveneo.plat.hibernate.dao.dao.CrmWoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean name="crmCustDAO" class="com.liveneo.plat.hibernate.dao.dao.CrmCustDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<!-- manager -->
+	<bean name="mgrTempletDAO" class="com.liveneo.plat.hibernate.dao.dao.MgrTempletDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean name="mgrWoDefineDAO" class="com.liveneo.plat.hibernate.dao.dao.MgrWoDefineDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<!-- 知识库 -->
+	<bean name="kbmsClassDAO" class="com.liveneo.plat.hibernate.dao.dao.KbmsClassDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean name="kbmsKlpDAO" class="com.liveneo.plat.hibernate.dao.dao.KbmsKlpDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean name="kbmsFileDAO" class="com.liveneo.plat.hibernate.dao.dao.KbmsFileDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+</beans>

@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liveneo.plat.hibernate.dao">
+	<class
+		name="Cusphonelist"
+		table="CUSPHONELIST"
+	>
+		<meta attribute="sync-DAO">true</meta>
+		<id
+			name="Id"
+			type="integer"
+			column="PK_CUSPHONELIST"
+		>
+			<generator class="native"/>
+		</id>
+
+		<property
+			name="Custlinkname"
+			column="CUSTLINKNAME"
+			type="string"
+			not-null="false"
+			length="30"
+		/>
+		<property
+			name="Phoneno"
+			column="PHONENO"
+			type="string"
+			not-null="false"
+			length="30"
+		/>
+		<property
+			name="Synstatus"
+			column="SYNSTATUS"
+			type="string"
+			not-null="false"
+			length="10"
+		/>
+		<property
+			name="Updatetime"
+			column="UPDATETIME"
+			type="timestamp"
+			not-null="true"
+			length="23"
+		/>
+		<property
+			name="Nolevel"
+			column="NOLEVEL"
+			type="string"
+			not-null="false"
+			length="10"
+		/>
+		<property
+			name="Remark"
+			column="REMARK"
+			type="string"
+			not-null="false"
+			length="500"
+		/>
+		<property
+			name="Temp1"
+			column="TEMP1"
+			type="string"
+			not-null="false"
+			length="500"
+		/>
+		<property
+			name="Temp2"
+			column="TEMP2"
+			type="string"
+			not-null="false"
+			length="500"
+		/>
+		<property
+			name="Temp3"
+			column="TEMP3"
+			type="string"
+			not-null="false"
+			length="500"
+		/>
+		<property
+			name="Temp4"
+			column="TEMP4"
+			type="string"
+			not-null="false"
+			length="500"
+		/>
+		<many-to-one
+			name="PkCustomerinfo"
+			column="PK_CUSTOMERINFO"
+			class="Customerinfo"
+			not-null="true"
+		>
+		</many-to-one>
+
+
+	</class>	
+</hibernate-mapping>

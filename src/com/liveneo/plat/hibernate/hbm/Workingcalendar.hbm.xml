@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liveneo.plat.hibernate.dao">
+	<class
+		name="Workingcalendar"
+		table="WORKINGCALENDAR"
+	>
+		<meta attribute="sync-DAO">true</meta>
+		<id
+			name="Id"
+			type="integer"
+			column="PK_WORKINGCALENDAR"
+		>
+			<generator class="native"/>
+		</id>
+
+		<property
+			name="Workingdate"
+			column="WORKINGDATE"
+			type="string"
+			not-null="true"
+			length="10"
+		/>
+		<property
+			name="Isvacation"
+			column="ISVACATION"
+			type="string"
+			not-null="true"
+			length="1"
+		/>
+		<property
+			name="Reamrk"
+			column="REAMRK"
+			type="string"
+			not-null="false"
+			length="100"
+		/>
+		<property
+			name="N1"
+			column="N1"
+			type="string"
+			not-null="false"
+			length="20"
+		/>
+		<property
+			name="N2"
+			column="N2"
+			type="string"
+			not-null="false"
+			length="20"
+		/>
+		<property
+			name="N3"
+			column="N3"
+			type="string"
+			not-null="false"
+			length="20"
+		/>
+
+
+	</class>	
+</hibernate-mapping>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- kbms class -->
+	<bean id="kbmsClassService" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="com.liveneo.plat.service.impl.kbms.KbmsClassService">
+				<property name="kbmsClassDAO">
+					<ref bean="kbmsClassDAO" />
+				</property>
+				<property name="kbmsKlpDAO">
+					<ref bean="kbmsKlpDAO" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="KbmsClassAction" class="com.liveneo.plat.web.action.kbms.KbmsClassAction"
+		singleton="false">
+		<property name="kbmsClassService">
+			<ref bean="kbmsClassService" />
+		</property>
+	</bean>
+	<!-- kbms klp -->
+	<bean id="kbmsKlpService" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="com.liveneo.plat.service.impl.kbms.KbmsKlpService">
+				<property name="kbmsKlpDAO">
+					<ref bean="kbmsKlpDAO" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="KbmsKlpAction" class="com.liveneo.plat.web.action.kbms.KbmsKlpAction"
+		singleton="false">
+		<property name="kbmsKlpService">
+			<ref bean="kbmsKlpService" />
+		</property>
+	</bean>
+	<!-- kbms file -->
+	<bean id="kbmsFileService" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="com.liveneo.plat.service.impl.kbms.KbmsFileService">
+				<property name="kbmsFileDAO">
+					<ref bean="kbmsFileDAO" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="KbmsFileAction" class="com.liveneo.plat.web.action.kbms.KbmsFileAction"
+		singleton="false">
+		<property name="kbmsFileService">
+			<ref bean="kbmsFileService" />
+		</property>
+	</bean>
+</beans>

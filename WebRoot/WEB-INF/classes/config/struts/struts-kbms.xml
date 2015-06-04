@@ -1,0 +1,56 @@
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd" >
+<struts>
+	<!-- 知识库配置  -->
+	<package name="kbmsklp-info" extends="lcp-default">
+		<action name="listKbmsKlp" class="KbmsKlpAction" method="listKbmsKlp">
+			<result name="returnToList">/WEB-INF/pages/kbms/klp/klp_list.jsp</result>
+		</action>
+		<action name="addKbmsKlp" class="KbmsKlpAction" method="addKbmsKlp">
+			<result name="success">/WEB-INF/pages/kbms/klp/klp_add.jsp</result>
+		</action>
+		<action name="saveKbmsKlp" class="KbmsKlpAction" method="saveKbmsKlp">
+			<result type="redirect">listKbmsKlp.action</result>
+		</action>
+		<action name="editKbmsKlp" class="KbmsKlpAction" method="editKbmsKlp">
+			<result name="returnToEditPage">/WEB-INF/pages/kbms/klp/klp_add.jsp</result>
+		</action>
+		<action name="detailsKbmsKlp" class="KbmsKlpAction" method="editKbmsKlp">
+			<result name="returnToEditPage">/WEB-INF/pages/kbms/klp/klp_details.jsp</result>
+		</action>
+		<action name="delKbmsKlp" class="KbmsKlpAction" method="delKbmsKlp">
+			<result type="redirect">listKbmsKlp.action</result>
+		</action>
+		<!-- see -->
+		<action name="listKbmsKlpSee" class="KbmsKlpAction" method="listKbmsKlp">
+			<result name="returnToList">/WEB-INF/pages/kbms/see/klp_see.jsp</result>
+		</action>
+		<!-- upload -->
+		<action name="uploadKbmsKlp" class="KbmsKlpAction" method="uploadKbmsKlp">
+			<result name="success">/WEB-INF/pages/kbms/klp/klp_upload.jsp</result>
+		</action>
+	</package>
+	<package name="kbmsclass-info" extends="lcp-default">
+		<action name="listKbmsClass" class="KbmsClassAction" method="listKbmsClass">
+			<result name="returnToList">/WEB-INF/pages/kbms/class/class_list.jsp</result>
+		</action>
+		<action name="addKbmsClass" class="KbmsClassAction" method="addKbmsClass">
+			<result name="success">/WEB-INF/pages/kbms/class/class_add.jsp</result>
+		</action>
+		<action name="saveKbmsClass" class="KbmsClassAction" method="saveKbmsClass">
+			<result type="redirect">listKbmsClass.action</result>
+		</action>
+		<action name="editKbmsClass" class="KbmsClassAction" method="editKbmsClass">
+			<result name="returnToEditPage">/WEB-INF/pages/kbms/class/class_add.jsp</result>
+		</action>
+		<action name="detailsKbmsClass" class="KbmsClassAction" method="editKbmsClass">
+			<result name="returnToEditPage">/WEB-INF/pages/wo/wo_details.jsp</result>
+		</action>
+		<action name="delKbmsClass" class="KbmsClassAction" method="delKbmsClass">
+			<result type="redirect">listKbmsClass.action</result>
+		</action>
+		<!-- see -->
+		<action name="listKbmsSee" class="KbmsClassAction" method="listKbmsClass">
+			<result name="returnToList">/WEB-INF/pages/kbms/see/class_see.jsp</result>
+		</action>
+	</package>
+</struts>

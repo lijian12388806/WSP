@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- crm wo -->
+	<bean id="crmWoService" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="com.liveneo.plat.service.impl.crm.CrmWoService">
+				<property name="crmWoDAO">
+					<ref bean="crmWoDAO" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="CrmWoAction" class="com.liveneo.plat.web.action.crm.CrmWoAction" singleton="false"> 
+		<property name="crmWoService">
+			<ref bean="crmWoService" />
+		</property>
+		<property name="crmCustService">
+			<ref bean="crmCustService" />
+		</property>
+		<property name="mgrService">
+			<ref bean="mgrService" />
+		</property>
+	</bean>
+	<!-- crm cust -->
+	<bean id="crmCustService" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="com.liveneo.plat.service.impl.crm.CrmCustService">
+				<property name="crmCustDAO">
+					<ref bean="crmCustDAO" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="CrmCustAction" class="com.liveneo.plat.web.action.crm.CrmCustAction" singleton="false"> 
+		<property name="crmCustService">
+			<ref bean="crmCustService" />
+		</property>
+		<property name="mgrService">
+			<ref bean="mgrService" />
+		</property>
+	</bean>
+	<!--
+		****************************工单管理*************************************
+	-->
+	<bean id="workOrderService" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="com.liveneo.plat.service.impl.WorkOrderService">
+				<property name="workorderDAO">
+					<ref bean="workorderDAO" />
+				</property>
+				<property name="orderdealinfoDAO">
+					<ref bean="orderdealinfoDAO" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="WorkOrderAction" class="com.liveneo.plat.web.action.WorkOrderAction" singleton="false">
+		<property name="workOrderService">
+			<ref bean="workOrderService" />
+		</property>
+		<property name="bdDictService">
+			<ref bean="bdDictService" />
+		</property>
+		<property name="customerinfoService">
+			<ref bean="customerinfoService" />
+		</property>
+		<property name="calldetailService">
+			<ref bean="calldetailService" />
+		</property>
+		<property name="userinfoService">
+			<ref bean="userinfoService" />
+		</property>
+	</bean>
+	<bean id="WorkReportAction" class="com.liveneo.plat.web.action.WorkReportAction" singleton="false">
+		<property name="workOrderService">
+			<ref bean="workOrderService" />
+		</property>
+	</bean>
+	<!--
+		****************************客户管理*************************************
+	-->
+	<bean id="customerinfoService" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="com.liveneo.plat.service.impl.CustomerinfoService">
+				<property name="customerinfoDAO">
+					<ref bean="customerinfoDAO" />
+				</property>
+				<property name="cusphonelistDAO">
+					<ref bean="cusphonelistDAO" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="CustomerinfoAction" class="com.liveneo.plat.web.action.CustomerinfoAction" singleton="false"> 
+		<property name="customerinfoService">
+			<ref bean="customerinfoService" />
+		</property>
+		<property name="bdDictService">
+			<ref bean="bdDictService" />
+		</property>
+	</bean>
+<!--
+		****************************工作地点*************************************
+	-->
+	<bean id="workstationService" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="com.liveneo.plat.service.impl.WorkstationService">
+				<property name="workstationDAO">
+					<ref bean="workstationDAO" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="WorkstationAction" class="com.liveneo.plat.web.action.WorkstationAction" singleton="false">
+		<property name="workstationService">
+			<ref bean="workstationService" />
+		</property>
+		<property name="customerinfoService">
+			<ref bean="customerinfoService" />
+		</property>
+		<property name="userinfoService">
+			<ref bean="userinfoService" />
+		</property>
+	</bean>
+<!--
+		****************************IVR留言*************************************
+	-->
+	<bean id="ivrvoiceService" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="com.liveneo.plat.service.impl.IvrvoiceService">
+				<property name="ivrvoiceDAO">
+					<ref bean="ivrvoiceDAO" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="IvrvoiceAction" class="com.liveneo.plat.web.action.IvrvoiceAction" singleton="false">
+		<property name="ivrvoiceService">
+			<ref bean="ivrvoiceService" />
+		</property>
+	</bean>
+	<!--
+		****************************呼叫记录*************************************
+	-->
+	<bean id="calldetailService" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="com.liveneo.plat.service.impl.CalldetailService">
+				<property name="calldetailDAO">
+					<ref bean="calldetailDAO" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="CalldetailAction" class="com.liveneo.plat.web.action.CalldetailAction" singleton="false">
+		<property name="calldetailService">
+			<ref bean="calldetailService" />
+		</property>
+	</bean>
+	<!--
+		****************************满意度调查*************************************
+	-->
+	<bean id="satscoreService" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="com.liveneo.plat.service.impl.SatscoreService">
+				<property name="satscoreDAO">
+					<ref bean="satscoreDAO" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="SatscoreAction" class="com.liveneo.plat.web.action.SatscoreAction" singleton="false">
+		<property name="satscoreService">
+			<ref bean="satscoreService" />
+		</property>
+	</bean>
+	<!--***************************任务设置*************************************-->
+	<bean id="jobmsgService" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="com.liveneo.plat.service.impl.JobmsgService">
+				<property name="bdJobmsgDAO">
+					<ref bean="bdJobmsgDAO" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="JobmsgAction"
+		class="com.liveneo.plat.web.action.JobmsgAction" singleton="false">
+		<property name="jobmsgService">
+			<ref bean="jobmsgService" />
+		</property>
+	</bean>
+	<!--***************************工作日历*************************************-->
+	<bean id="workingcalendarService" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="com.liveneo.plat.service.impl.WorkingcalendarService">
+				<property name="workingcalendarDAO">
+					<ref bean="workingcalendarDAO" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="WorkingcalendarAction"
+		class="com.liveneo.plat.web.action.WorkingcalendarAction" singleton="false">
+		<property name="workingcalendarService">
+			<ref bean="workingcalendarService" />
+		</property>
+	</bean>
+</beans>

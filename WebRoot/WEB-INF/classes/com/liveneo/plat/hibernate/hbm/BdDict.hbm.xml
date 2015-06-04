@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liveneo.plat.hibernate.dao">
+	<class
+		name="BdDict"
+		table="bd_dict"
+	>
+		<meta attribute="sync-DAO">true</meta>
+		<id
+			name="Id"
+			type="integer"
+			column="PK_DICT"
+		>
+			<generator class="native"/>
+		</id>
+
+		<property
+			name="Dictcode"
+			column="DICTCODE"
+			type="string"
+			not-null="false"
+			length="20"
+		/>
+		<property
+			name="Dicttitle"
+			column="DICTTITLE"
+			type="string"
+			not-null="false"
+			length="20"
+		/>
+		<property
+			name="Dicttype"
+			column="DICTTYPE"
+			type="string"
+			not-null="false"
+			length="4"
+		/>
+		<property
+			name="Isvalid"
+			column="ISVALID"
+			type="string"
+			not-null="false"
+			length="2"
+		/>
+		<property
+			name="Remark"
+			column="REMARK"
+			type="string"
+			not-null="false"
+			length="100"
+		/>
+		<property
+			name="Temp"
+			column="TEMP"
+			type="string"
+			not-null="false"
+			length="100"
+		/>
+	
+
+		<set name="BdDictdetails" inverse="true">
+			<key column="PK_DICT"/>
+			<one-to-many class="BdDictdetail"/>
+		</set>
+
+
+	</class>	
+</hibernate-mapping>

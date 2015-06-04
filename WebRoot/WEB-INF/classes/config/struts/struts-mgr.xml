@@ -1,0 +1,89 @@
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd" >
+<struts>
+	<!-- crm cust配置  -->
+	<package name="crmcust-info" extends="lcp-default">
+		<action name="listCrmCust" class="CrmCustAction" method="listCrmCust">
+			<result name="returnToList">/WEB-INF/pages/crm/cust/cust_list.jsp</result>
+		</action>
+		<action name="addCrmCust" class="CrmCustAction" method="addCrmCust">
+			<result name="success">/WEB-INF/pages/crm/cust/cust_add.jsp</result>
+		</action>
+		<action name="saveCrmCust" class="CrmCustAction" method="saveCrmCust">
+			<result type="redirect">listCrmCust.action</result>
+		</action>
+		<action name="editCrmCust" class="CrmCustAction" method="editCrmCust">
+			<result name="returnToEditPage">/WEB-INF/pages/crm/cust/cust_add.jsp</result>
+		</action>
+		<action name="detailsCrmCust" class="CrmCustAction" method="editCrmCust">
+			<result name="returnToEditPage">/WEB-INF/pages/crm/cust/cust_details.jsp</result>
+		</action>
+		<action name="delCrmCust" class="CrmCustAction" method="delCrmCust">
+			<result type="redirect">listCrmCust.action</result>
+		</action>
+	</package>
+	<!-- crmwo配置  -->
+	<package name="crmwo-info" extends="lcp-default">
+		<action name="listCrmWo" class="CrmWoAction" method="listCrmWo">
+			<result name="returnToList">/WEB-INF/pages/crm/wo/wo_list.jsp</result>
+			<result name="wo_his">/WEB-INF/pages/crm/wo/wo_history.jsp</result>
+		</action>
+		<action name="addCallsWo" class="CrmWoAction" method="addCallsWo">
+			<result name="success">/WEB-INF/pages/crm/wo/wo_add.jsp</result>
+		</action>
+		<action name="saveCrmWo" class="CrmWoAction" method="saveCrmWo">
+			<result type="redirect">listCrmWo.action</result>
+		</action>
+		<action name="editCrmWo" class="CrmWoAction" method="editCrmWo">
+			<result name="returnToEditPage">/WEB-INF/pages/crm/wo/wo_add.jsp</result>
+		</action>
+		<action name="detailsCrmWo" class="CrmWoAction" method="editCrmWo">
+			<result name="returnToEditPage">/WEB-INF/pages/crm/wo/wo_details.jsp</result>
+		</action>
+		<action name="delCrmWo" class="CrmWoAction" method="delCrmWo">
+			<result type="redirect">listCrmWo.action</result>
+		</action>
+	</package>
+	<!-- mgr配置  -->
+	<package name="mgr-info" extends="lcp-default">
+		<action name="listMgrTemplet" class="MgrAction" method="listMgrTemplet">
+			<result name="returnToList">/WEB-INF/pages/mgr/tmp/tmp_list.jsp</result>
+		</action>
+		<action name="addMgrTemplet" class="MgrAction" method="addMgrTemplet">
+			<result name="success">/WEB-INF/pages/mgr/tmp/tmp_add.jsp</result>
+		</action>
+		<action name="editMgrTemplet" class="MgrAction" method="editMgrTemplet">
+			<result name="returnToEditPage">/WEB-INF/pages/mgr/tmp/tmp_add.jsp</result>
+		</action>
+		<action name="saveMgrTemplet" class="MgrAction" method="saveMgrTemplet">
+			<result type="redirect">listMgrTemplet.action</result>
+		</action>
+		<action name="delMgrTemplet" class="MgrAction" method="delMgrTemplet">
+			<result type="redirect">listMgrTemplet.action</result>
+		</action>
+		<action name="addcloneMgrTemplet" class="MgrAction" method="addcloneMgrTemplet">
+			<result type="redirect">listMgrTemplet.action</result>
+		</action>
+		<action name="getMgrTempletUrl" class="MgrAction" method="getMgrTempletUrl">
+			<result name="success">/WEB-INF/pages/mgr/tmp/tmp_url.jsp</result>
+		</action>
+		<!-- 字段定义 -->
+		<action name="addMgrWoDefine" class="MgrAction" method="addMgrWoDefine">
+			<result name="success">/WEB-INF/pages/mgr/col/col_add.jsp</result>
+		</action>
+		<action name="saveMgrWoDefine" class="MgrAction" method="saveMgrWoDefine">
+			<result type="redirect">listMgrWoDefine.action</result>
+		</action>
+		<action name="listMgrWoDefine" class="MgrAction" method="listMgrWoDefine">
+			<result name="success">/WEB-INF/pages/mgr/col/col_list.jsp</result>
+		</action>
+		<action name="cloneMgrWoDefine" class="MgrAction" method="cloneMgrWoDefine">
+			<result type="redirect">listMgrWoDefine.action</result>
+		</action>
+		<action name="delMgrWoDefine" class="MgrAction" method="delMgrWoDefine">
+			<result type="redirect">listMgrWoDefine.action</result>
+		</action>
+		<action name="editMgrWoDefine" class="MgrAction" method="editMgrWoDefine">
+			<result name="returnToEditPage">/WEB-INF/pages/mgr/col/col_add.jsp</result>
+		</action>
+	</package>
+</struts>

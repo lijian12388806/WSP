@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liveneo.plat.hibernate.dao">
+	<class
+		name="KbmsKlp"
+		table="kbms_klp"
+	>
+		<meta attribute="sync-DAO">true</meta>
+		<id
+			name="Id"
+			type="integer"
+			column="ID"
+		>
+			<generator class="native"/>
+		</id>
+
+		<property
+			name="Classid"
+			column="CLASSID"
+			type="integer"
+			not-null="false"
+			length="10"
+		/>
+		<property
+			name="Name"
+			column="NAME"
+			type="string"
+			not-null="false"
+			length="255"
+		/>
+		<property
+			name="Kind"
+			column="KIND"
+			type="string"
+			not-null="false"
+			length="255"
+		/>
+		<property
+			name="Createdate"
+			column="CREATEDATE"
+			type="timestamp"
+			not-null="false"
+		/>
+		<property
+			name="Modifydate"
+			column="MODIFYDATE"
+			type="timestamp"
+			not-null="false"
+		/>
+		<property
+			name="Content"
+			column="CONTENT"
+			type="string"
+			not-null="false"
+		/>
+
+
+	</class>	
+</hibernate-mapping>

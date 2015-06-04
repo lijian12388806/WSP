@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liveneo.plat.hibernate.dao">
+	<class
+		name="MgrWoDefine"
+		table="mgr_wo_define"
+	>
+		<meta attribute="sync-DAO">true</meta>
+		<id
+			name="Id"
+			type="integer"
+			column="ID"
+		>
+			<generator class="native"/>
+		</id>
+
+		<property
+			name="PkTemplet"
+			column="PK_TEMPLET"
+			type="integer"
+			not-null="true"
+			length="10"
+		/>
+		<property
+			name="DefType"
+			column="DEF_TYPE"
+			type="string"
+			not-null="false"
+			length="32"
+		/>
+		<property
+			name="DefCol"
+			column="DEF_COL"
+			type="string"
+			not-null="false"
+			length="128"
+		/>
+		<property
+			name="DefCanedit"
+			column="DEF_CANEDIT"
+			type="string"
+			not-null="false"
+			length="32"
+		/>
+		<property
+			name="DefColTitle"
+			column="DEF_COL_TITLE"
+			type="string"
+			not-null="false"
+			length="128"
+		/>
+		<property
+			name="DefColType"
+			column="DEF_COL_TYPE"
+			type="string"
+			not-null="false"
+			length="32"
+		/>
+		<property
+			name="DefColFormat"
+			column="DEF_COL_FORMAT"
+			type="string"
+			not-null="false"
+			length="128"
+		/>
+		<property
+			name="DefColLmin"
+			column="DEF_COL_LMIN"
+			type="string"
+			not-null="false"
+			length="32"
+		/>
+		<property
+			name="DefColLmax"
+			column="DEF_COL_LMAX"
+			type="string"
+			not-null="false"
+			length="32"
+		/>
+		<property
+			name="DefColClass"
+			column="DEF_COL_CLASS"
+			type="string"
+			not-null="false"
+			length="32"
+		/>
+		<property
+			name="DefColRequired"
+			column="DEF_COL_REQUIRED"
+			type="string"
+			not-null="false"
+			length="32"
+		/>
+		<property
+			name="DefColRegion"
+			column="DEF_COL_REGION"
+			type="string"
+			not-null="false"
+			length="32"
+		/>
+		<property
+			name="DefColOrder"
+			column="DEF_COL_ORDER"
+			type="integer"
+			not-null="false"
+			length="11"
+		/>
+
+
+	</class>	
+</hibernate-mapping>

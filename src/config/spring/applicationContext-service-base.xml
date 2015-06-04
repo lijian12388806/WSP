@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!--
+		****************************数据字典*************************************
+	-->
+	<bean id="bdDictService" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="com.liveneo.plat.service.impl.BdDictService">
+				<property name="bdDictDAO">
+					<ref bean="bdDictDAO" />
+				</property>
+				<property name="bdDictdetailDAO">
+					<ref bean="bdDictdetailDAO" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="BdDictAction" class="com.liveneo.plat.web.action.BdDictAction" singleton="false">
+		<property name="bdDictService">
+			<ref bean="bdDictService" />
+		</property>
+	</bean>
+	<bean id="BdDutyAction" class="com.liveneo.plat.web.action.BdDutyAction" singleton="false">
+		<property name="bdDictService">
+			<ref bean="bdDictService" />
+		</property>
+	</bean>
+	<!--
+		****************************用户*************************************
+	-->
+	<bean id="userinfoService" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="com.liveneo.plat.service.impl.UserinfoService">
+				<property name="userinfoDAO">
+					<ref bean="userinfoDAO" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="UserinfoAction" class="com.liveneo.plat.web.action.UserinfoAction" singleton="false">
+		<property name="userinfoService">
+			<ref bean="userinfoService" />
+		</property>
+		<property name="roleService">
+			<ref bean="roleService" />
+		</property>
+		<property name="workstationService">
+			<ref bean="workstationService" />
+		</property>
+	</bean>
+	<!--
+		****************************菜单信息*************************************
+	-->
+	<bean id="menuinfoService" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="com.liveneo.plat.service.impl.MenuinfoService">
+				<property name="menuinfoDAO">
+					<ref bean="menuinfoDAO" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="MenuinfoAction" class="com.liveneo.plat.web.action.MenuinfoAction" singleton="false">
+		<property name="menuinfoService">
+			<ref bean="menuinfoService" />
+		</property>
+	</bean>
+	<!--
+		****************************菜单信息*************************************
+	-->
+	<bean id="LoginAction" class="com.liveneo.plat.web.action.LoginAction" singleton="false">
+		<property name="menuinfoService">
+			<ref bean="menuinfoService" />
+		</property>
+		<property name="roleService">
+			<ref bean="roleService" />
+		</property>
+		<property name="userinfoService">
+			<ref bean="userinfoService" />
+		</property>
+		<property name="workOrderService">
+			<ref bean="workOrderService" />
+		</property>
+		<property name="mgrService">
+			<ref bean="mgrService" />
+		</property>
+	</bean>
+	<!--
+		****************************管理员*************************************
+	-->
+	<bean id="IsAdminAction" class="com.liveneo.plat.web.action.IsAdminAction" singleton="false">
+		<property name="userinfoService">
+			<ref bean="userinfoService" />
+		</property>
+	</bean>
+	<!--
+		****************************文件上传*************************************
+	-->
+	<bean id="uploadService" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="com.liveneo.plat.service.impl.UploadService">
+				<property name="uploadfileDAO">
+					<ref bean="uploadfileDAO" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="UploadAction" class="com.liveneo.plat.web.action.UploadAction" singleton="false">
+		<property name="uploadService">
+			<ref bean="uploadService" />
+		</property>
+	</bean>
+	<!--
+		****************************系统日志*************************************
+	-->
+	<bean id="logmsgService" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="com.liveneo.plat.service.impl.LogmsgService">
+				<property name="logmsgDAO">
+					<ref bean="logmsgDAO" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="LogmsgAction" class="com.liveneo.plat.web.action.LogmsgAction" singleton="false">
+		<property name="logmsgService">
+			<ref bean="logmsgService" />
+		</property>
+	</bean>
+	<!--
+		***************************角色信息*************************************
+	-->
+	<bean id="roleService" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="com.liveneo.plat.service.impl.RoleService">
+				<property name="bdRoleDAO">
+					<ref bean="bdRoleDAO" />
+				</property>
+				<property name="bdRolemenuDAO">
+					<ref bean="bdRolemenuDAO" />
+				</property>
+				<property name="bdUserinforoleDAO">
+					<ref bean="bdUserinforoleDAO" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="RoleAction" class="com.liveneo.plat.web.action.RoleAction" singleton="false">
+		<property name="roleService">
+			<ref bean="roleService" />
+		</property>
+		<property name="menuinfoService">
+			<ref bean="menuinfoService" />
+		</property>
+	</bean>
+	<bean id="DownloadAction" class="com.liveneo.plat.web.action.DownloadAction" singleton="false">
+	<property name="bdDictService">
+			<ref bean="bdDictService" />
+		</property>
+	</bean>
+</beans>

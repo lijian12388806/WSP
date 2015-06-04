@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liveneo.plat.hibernate.dao">
+	<class
+		name="Menuinfo"
+		table="menuinfo"
+	>
+		<meta attribute="sync-DAO">true</meta>
+		<id
+			name="Id"
+			type="integer"
+			column="PK_MENU"
+		>
+			<generator class="native"/>
+		</id>
+
+		<property
+			name="Menuname"
+			column="MENUNAME"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+		<property
+			name="Supermenu"
+			column="SUPERMENU"
+			type="integer"
+			not-null="false"
+			length="10"
+		/>
+		<property
+			name="Menuseq"
+			column="MENUSEQ"
+			type="integer"
+			not-null="false"
+			length="10"
+		/>
+		<property
+			name="Isavailable"
+			column="ISAVAILABLE"
+			type="string"
+			not-null="false"
+			length="2"
+		/>
+		<property
+			name="Linkaddress"
+			column="LINKADDRESS"
+			type="string"
+			not-null="false"
+			length="200"
+		/>
+		<property
+			name="Temp1"
+			column="TEMP1"
+			type="string"
+			not-null="false"
+			length="200"
+		/>
+		<property
+			name="Temp2"
+			column="TEMP2"
+			type="string"
+			not-null="false"
+			length="200"
+		/>
+
+
+	</class>	
+</hibernate-mapping>

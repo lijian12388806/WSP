@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liveneo.plat.hibernate.dao">
+	<class
+		name="Uploadfile"
+		table="uploadfile"
+	>
+		<meta attribute="sync-DAO">true</meta>
+		<id
+			name="Id"
+			type="integer"
+			column="pk_upfile"
+		>
+			<generator class="native"/>
+		</id>
+
+		<property
+			name="Filename"
+			column="filename"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+		<property
+			name="Filetype"
+			column="filetype"
+			type="string"
+			not-null="false"
+			length="20"
+		/>
+		<property
+			name="Filepath"
+			column="filepath"
+			type="string"
+			not-null="false"
+			length="100"
+		/>
+		<property
+			name="Createtime"
+			column="createtime"
+			type="timestamp"
+			not-null="false"
+		/>
+
+
+	</class>	
+</hibernate-mapping>

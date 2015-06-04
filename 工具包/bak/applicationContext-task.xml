@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	<!-- customer job-->
+	<bean id="synCustomerJob" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="com.liveneo.plat.web.task.synCustomerTask">
+				<property name="customerinfoService"
+					ref="customerinfoService" />
+					<property name="mdCrmdOpportunityService"
+					ref="mdCrmdOpportunityService" />
+			</bean>
+		</property>
+	</bean>
+	<bean id="synCustomerDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="synCustomerJob" />
+		<property name="targetMethod" value="addsynCustomerinfo" />
+		<property name="concurrent" value="false" />
+	</bean>
+	<bean id="synCustomerTrigger"
+		class="com.liveneo.plat.web.task.InitializingCronTrigger">
+		<property name="jobDetail" ref="synCustomerDetail" />
+		<property name="jobmsgService" ref="jobmsgService" />
+		<constructor-arg index="0">
+			<value>synCustomerTrigger</value>
+		</constructor-arg>
+	</bean>
+		<!-- synReportFormsTaskYear job-->
+	<bean id="synReportFormsTaskYear" parent="baseTransactionProxyipcc">
+		<property name="target">
+			<bean class="com.liveneo.plat.web.task.SynReportFormsTaskYear">
+					<property name="ipccDBDAO"
+					ref="ipccDBDAO" />
+					<property name="customerinfoService"
+					ref="customerinfoService" />
+			</bean>
+		</property>
+	</bean>
+	<bean id="synReportFormsDetailYear"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="synReportFormsTaskYear" />
+		<property name="targetMethod" value="addsynReportFormsinfoYear" />
+		<property name="concurrent" value="false" />
+	</bean>
+	<bean id="synReportFormsTriggerYear"
+		class="com.liveneo.plat.web.task.InitializingCronTrigger">
+		<property name="jobDetail" ref="synReportFormsDetailYear" />
+		<property name="jobmsgService" ref="jobmsgService" />
+		<constructor-arg index="0">
+			<value>synReportFormsTriggerYear</value>
+		</constructor-arg>
+	</bean>
+	<!-- synReportFormsTaskDay job-->
+	<bean id="synReportFormsTaskDay" parent="baseTransactionProxyipcc">
+		<property name="target">
+			<bean class="com.liveneo.plat.web.task.SynReportFormsTaskDay">
+					<property name="ipccDBDAO"
+					ref="ipccDBDAO" />
+					<property name="customerinfoService"
+					ref="customerinfoService" />
+			</bean>
+		</property>
+	</bean>
+	<bean id="synReportFormsDetailDay"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="synReportFormsTaskDay" />
+		<property name="targetMethod" value="addsynReportFormsinfoDay" />
+		<property name="concurrent" value="false" />
+	</bean>
+	<bean id="synReportFormsTriggerDay"
+		class="com.liveneo.plat.web.task.InitializingCronTrigger">
+		<property name="jobDetail" ref="synReportFormsDetailDay" />
+		<property name="jobmsgService" ref="jobmsgService" />
+		<constructor-arg index="0">
+			<value>synReportFormsTriggerDay</value>
+		</constructor-arg>
+	</bean>
+	<!-- synReportFormsTaskMonth job-->
+	<bean id="synReportFormsTaskMonth" parent="baseTransactionProxyipcc">
+		<property name="target">
+			<bean class="com.liveneo.plat.web.task.SynReportFormsTaskMonth">
+					<property name="ipccDBDAO"
+					ref="ipccDBDAO" />
+					<property name="customerinfoService"
+					ref="customerinfoService" />
+			</bean>
+		</property>
+	</bean>
+	<bean id="synReportFormsDetailMonth"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="synReportFormsTaskMonth" />
+		<property name="targetMethod" value="addsynReportFormsinfoMonth" />
+		<property name="concurrent" value="false" />
+	</bean>
+	<bean id="synReportFormsTriggerMonth"
+		class="com.liveneo.plat.web.task.InitializingCronTrigger">
+		<property name="jobDetail" ref="synReportFormsDetailMonth" />
+		<property name="jobmsgService" ref="jobmsgService" />
+		<constructor-arg index="0">
+			<value>synReportFormsTriggerMonth</value>
+		</constructor-arg>
+	</bean>
+	<!-- synReportDetail job-->
+	<bean id="synReportFormsDetailTask" parent="baseTransactionProxyipcc">
+		<property name="target">
+			<bean class="com.liveneo.plat.web.task.SynReportFormsDetailTask">
+					<property name="ipccDBDAO"
+					ref="ipccDBDAO" />
+					<property name="customerinfoService"
+					ref="customerinfoService" />
+			</bean>
+		</property>
+	</bean>
+	<bean id="synReportFormsDetailDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="synReportFormsDetailTask" />
+		<property name="targetMethod" value="addsynReportFormsinfoDetail" />
+		<property name="concurrent" value="false" />
+	</bean>
+	<bean id="synReportFormsDetailTrigger"
+		class="com.liveneo.plat.web.task.InitializingCronTrigger">
+		<property name="jobDetail" ref="synReportFormsDetailDetail" />
+		<property name="jobmsgService" ref="jobmsgService" />
+		<constructor-arg index="0">
+			<value>synReportFormsDetailTrigger</value>
+		</constructor-arg>
+	</bean>
+		<!-- ipcc 报表-->
+	<bean id="synIpccReportTask" parent="baseTransactionProxyipcc">
+		<property name="target">
+			<bean class="com.liveneo.plat.web.task.SynIpccReportTask">
+					<property name="ipcccallService"
+					ref="ipcccallService" />
+			</bean>
+		</property>
+	</bean>
+	<bean id="synIpccReportDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="synIpccReportTask" />
+		<property name="targetMethod" value="executeTask" />
+		<property name="concurrent" value="false" />
+	</bean>
+	<bean id="synIpccReportTaskTrigger"
+		class="com.liveneo.plat.web.task.InitializingCronTrigger">
+		<property name="jobDetail" ref="synIpccReportDetail" />
+		<property name="jobmsgService" ref="jobmsgService" />
+		<constructor-arg index="0">
+			<value>synIpccReportTaskTrigger</value>
+		</constructor-arg>
+	</bean>
+	<!-- customer trigger --> 
+	<bean id="schedulerForCustomer"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="synCustomerTrigger" />
+			</list>
+		</property>
+	</bean>
+	<!-- schedulerReportFormsDetail trigger --> 
+	<bean id="schedulerReportFormsDetail"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="synReportFormsDetailTrigger" />
+			</list>
+		</property>
+	</bean>
+	
+	<!-- reportforms trigger --> 
+	<bean id="schedulerForReportFormsDay"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="synReportFormsTriggerDay" />
+			</list>
+		</property>
+	</bean>
+	<bean id="schedulerForReportFormsMonth"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="synReportFormsTriggerMonth" />
+			</list>
+		</property>
+	</bean>
+	<bean id="schedulerForReportFormsYear"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="synReportFormsTriggerYear" />
+			</list>
+		</property>
+	</bean>
+	<!-- SynIpccReportTask trigger --> 
+	<bean id="schedulerForIpccreport"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="synIpccReportTaskTrigger" />
+			</list>
+		</property>
+	</bean>
+</beans>

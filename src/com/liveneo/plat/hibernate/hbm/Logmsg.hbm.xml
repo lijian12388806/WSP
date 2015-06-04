@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liveneo.plat.hibernate.dao">
+	<class
+		name="Logmsg"
+		table="logmsg"
+	>
+		<meta attribute="sync-DAO">true</meta>
+		<id
+			name="Id"
+			type="integer"
+			column="pk_logmsg"
+		>
+			<generator class="native"/>
+		</id>
+
+		<property
+			name="Username"
+			column="username"
+			type="string"
+			not-null="false"
+			length="20"
+		/>
+		<property
+			name="Createtime"
+			column="createtime"
+			type="timestamp"
+			not-null="false"
+		/>
+		<property
+			name="Ip"
+			column="ip"
+			type="string"
+			not-null="false"
+			length="20"
+		/>
+		<property
+			name="Logtype"
+			column="logtype"
+			type="string"
+			not-null="false"
+			length="20"
+		/>
+		<property
+			name="Logcontent"
+			column="logcontent"
+			type="string"
+			not-null="false"
+			length="1024"
+		/>
+		<property
+			name="Entityname"
+			column="entityname"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+
+
+	</class>	
+</hibernate-mapping>

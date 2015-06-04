@@ -1,0 +1,816 @@
+a:link {color:#4799b6; }
+a:visited {color:#85851F;}
+
+
+form {
+margin-top: 0px;
+margin-bottom: 0px;
+margin: 0px;
+}
+
+/* DIANN: BODY, TD, and P had been commented out */
+
+
+BODY {
+margin:0px;
+margin-top:0px;
+margin-left:0px;
+}
+
+
+TD {
+font-family: verdana;
+color:#000000;
+font-weight: normal;
+font-size: 11px;
+}
+
+
+/*
+TD A {
+color:#4799b6;
+}
+
+TD A:visited {
+color:#85851F;
+}
+*/
+
+
+
+P {
+font-family: verdana;
+color:#000000;
+font-weight: normal;
+font-size: 11px;
+}
+
+P A {
+color:#4799b6;
+}
+
+P A:visited {
+color:#85851F;
+}
+
+
+
+
+
+/*
+LI A {
+color:#4799b6;
+}
+LI A:visited {
+color:#85851F;
+}
+*/
+
+
+.boldwhite A{
+color:#FFFFFF;
+text-decoration: none;
+}
+
+
+
+.arialnarrow {
+font-family: verdana;
+color:#ffffff;
+font-weight: bold;
+font-size: 11px;
+text-decoration: none;
+margin-top: 20px
+}
+
+a.arialnarrow:hover   {
+text-decoration: underline
+}
+
+.sidenav{
+font-family: verdana;
+color:#067F99;
+font-size:11px;
+font-weight: bold;
+text-decoration: none;
+padding-top:8px;padding-bottom:7px;
+}
+
+a.sidenav:hover {
+text-decoration: underline;
+}
+
+
+
+
+
+.linkCall {
+font-family: verdana;
+color:#4799b6;
+font-weight: normal;
+font-size: .70em;
+}
+
+.rrhead A{
+font-family: verdana;
+color:#4799b6;
+font-weight: bold;
+}
+
+.rrhead A:VISITED{
+font-family: verdana;
+color:#85851F;
+font-weight: bold;
+}
+
+.bluetext {
+font-family: verdana;
+color:#000000;
+font-weight: normal;
+font-size: 10pt;
+}
+
+a.bluetext:link {
+color:#4799b6;
+}
+a.bluetext:VISITED {color:#067F99;}
+a.bluetext:ACTIVE {color:#D6CE49;}
+
+
+/*
+.bluetext a:link  {color:4799b6;}
+.bluetext a:visited {color:#067F99;}
+.bluetext a:active  {color:4799b6;}
+*/
+
+
+.bluehd {
+font-family: verdana;
+color:#4799b6;
+font-weight: bold;
+font-size: .70em;
+}
+
+.smallboldwhite {
+font-family: verdana;
+color:#ffffff;
+font-weight: bold;
+font-size: .7em;
+}
+
+.dkbluebold {
+font-family: verdana;
+color:#067F99;
+font-weight: bold;
+}
+
+.dkblueboldU {
+font-family: verdana;
+color:#067F99;
+font-weight: bold;
+text-decoration:underline;
+}
+
+
+.footerlink {
+font-family: verdana;
+color:#cc6600;
+font-weight: none;
+font-size:.6em;
+}
+
+
+
+
+.numbertext {
+font-family:verdana;
+font-weight:normal;
+color:#000000;
+}
+
+.smblack {
+font-family: verdana;
+color:#000000;
+font-weight: normal;
+font-size: 8pt;
+}
+	
+.bullet {
+font-family: verdana;
+color:#067F99;
+font-weight: bold;
+font-size: .85em;
+}
+
+.smwhitetext {
+font-family: verdana;
+color:#ffffff;
+font-weight: normal;
+font-size:10px;
+}
+
+.smwhitetext A:VISITED {
+color:#ffffff;
+}
+
+.smwhitetext A:ACTIVE {
+color:#ffffff;
+}
+
+.smwhitetext A {
+color:#ffffff;
+}
+
+
+.subtopnav{
+font-family: verdana;
+color:#000000;
+font-weight: bold;
+font-size:10px;
+text-decoration: none;
+}
+
+.subtopnavover{
+background:#4799b6;
+}
+.subtopnavover A{
+color:#ffffff;
+}
+.subtopnavout{
+background:#d6ce49;
+}
+
+.smnavblack {
+font-family: verdana;
+color:#000000;
+font-weight: bold;
+font-size:.6em;
+text-decoration: none;
+}
+
+.smnavblack A {
+font-family: verdana;
+color:#000000;
+font-weight: bold;
+text-decoration: none;
+}
+
+.navblack {
+font-family: verdana;
+color:#000000;
+font-weight: bold;
+font-size: .65em;
+}
+
+.navblack A {
+font-family: verdana;
+color:#000000;
+font-weight: bold;
+text-decoration: none;
+}
+
+.navover{
+font-family: verdana;
+background:#4799b6;
+color:#FFFFFF;
+font-size: .65em;
+font-weight: bold;
+cursor:hand;
+}
+
+.navover A {
+font-family: verdana;
+background:#4799b6;
+color:#FFFFFF;
+font-weight: bold;
+cursor:hand;
+text-decoration: none;
+
+}
+
+.navout{
+font-family: verdana;
+background:#d6ce49;
+color:#000000;
+font-weight: bold;
+cursor:hand;
+}
+
+.navout A{
+font-family: verdana;
+background:#d6ce49;
+color:#000000;
+font-size: .65em;
+font-weight: bold;
+cursor:hand;
+text-decoration: none;
+}
+/* end 1st level dropdown navigation class */
+
+/* begin 2nd level spillout navigation class */
+.subnav {
+font-family: verdana;
+color:#000000;
+font-weight: bold;
+font-size: .65em;
+text-decoration: none;
+}
+
+.subnavover{
+font-family: verdana;
+background:#d6ce49;
+color:#000000;
+font-weight: bold;
+cursor:hand;
+}
+
+.subnavout{
+font-family: verdana;
+background:#4799b6;
+color:#000000;
+font-weight: bold;
+cursor:hand;
+}
+
+
+
+body {
+background:#FFFFFF;
+}
+
+
+.home {
+font-family: verdana;
+color:#ffffff;
+font-weight: bold;
+font-size: 11px;
+text-decoration:none;
+letter-spacing:-.04em;
+}
+
+a.home:link { color:#ffffff; }
+a.home:visited { color:#ffffff; }
+a.home:active {color:#ffffff; }
+
+.home:hover{
+text-decoration:underline;
+}
+
+.whitelink {
+font-family: verdana;
+color:#FFFFFF;
+font-weight: normal;
+font-size: 11px;
+}
+
+.whitelink A{
+color:#FFFFFF;
+}
+
+.lbluetext {
+font-family: verdana;
+color:#4799B6;
+font-weight: bold;
+font-size: 11px;
+}
+
+.boldblack {
+font-family: verdana;
+color:#000000;
+font-weight: bold;
+font-size: 11px;
+}
+
+.smboldblack {
+font-family: verdana;
+color:#000000;
+font-weight: bold;
+font-size: 10px;
+}
+
+.small {
+font-family: verdana;
+color:#000000;
+font-weight: normal;
+font-size: 10px;
+}
+.small A{
+color:#4799B6;
+}
+
+
+.titlewhite {
+font-family: verdana;
+color:#FFFFFF;
+font-weight: bold;
+font-size:15px;
+}
+
+.header {
+font-family: verdana;
+color:#067F99;
+font-weight: bold;
+font-size:12px;
+}
+.header A {
+color:#4799B6;
+}
+
+
+
+.sidenav1 {
+font-family: verdana;
+color:#000000;
+font-weight: bold;
+font-size: 11px;
+}
+
+.sidenav1 A{
+color:#000000;
+text-decoration:none;
+}
+
+.sidenav2 {
+font-family: verdana;
+color:#3591A4;
+font-weight: bold;
+font-size: 11px;
+}
+
+/* DIANN: I added this sidenav2 A */
+.sidenav2 A{
+color:#3591A4;
+text-decoration:none;
+}
+
+.sidenav2 A:hover{
+text-decoration:underline;
+}
+
+.sidenav2 A:visited{
+color:#067F99;
+text-decoration:none;
+}
+
+.sidenav3 {
+font-family: verdana;
+color:#FFFFFF;
+font-weight: bold;
+font-size: 11px;
+}
+
+.sidenav3 A{
+color:#FFFFFF;
+text-decoration:none;
+}
+
+/* DIANN: I added this A:visited */
+.sidenav3 A:visited{
+color:#FFFFFF;
+text-decoration:none;
+}
+
+.sidenav3 A:hover{
+text-decoration:underline;
+}
+
+.sidenav4 {
+font-family: verdana;
+color:#067F99;
+font-weight: bold;
+font-size: 11px;
+}
+
+.sidenav4 A{
+/* DIANN: I added the color spec */
+color:#067F99;
+text-decoration:none;
+}
+
+/* DIANN: I added this A:visited */
+.sidenav4 A:visited{
+color:#067F99;
+text-decoration:none;
+}
+
+.sidenav4 A:hover{
+text-decoration:underline;
+}
+
+
+/*
+Changed for tqueenan 9/10/2003
+
+.sidenav5 {
+font-family: verdana;
+color:#000000;
+font-weight: normal;
+font-size: 11px;
+}
+
+.sidenav5 A{
+color:#067F99;
+text-decoration:none;
+}
+
+.sidenav5 A:hover{
+text-decoration:underline;
+}
+
+*/
+
+.sidenav5 {
+font-family: verdana;
+color:#000000;
+font-weight: normal;
+font-size: 11px;
+}
+
+
+.sidenav5 A{
+color:#067F99;
+font-weight: normal;
+text-decoration:none;
+}
+
+
+.sidenav5 A:hover{
+font-weight: normal;
+text-decoration:underline;
+}
+
+
+
+/* DIANN: I added this A:visited */
+.sidenav5 A:visited{
+color:#067F99;
+text-decoration:none;
+}
+
+
+.sidenav6 {
+font-family: verdana;
+color:#000000;
+font-weight: normal;
+font-size: 11px;
+}
+
+.sidenav6 A{
+color:#067F99;
+text-decoration:none;
+}
+
+.sidenav6 A:hover{
+text-decoration:underline;
+}
+
+
+
+
+
+.ltbluehead {
+font-family: verdana;
+color:#4799b6;
+font-weight: bold;
+font-size: 13px;
+}
+
+.ltbluehead A{
+font-family: verdana;
+color:#4799b6;
+font-weight: bold;
+}
+
+.ltbluehead A:VISITED{
+font-family: verdana;
+color:#85851F;
+font-weight: bold;
+}
+
+
+.linkcl A {
+color:#067F99;
+font-weight: bold;
+}
+
+.sitename {
+	font-size: 90px;
+	color:#067F99;
+	font-weight: bold;
+	font-family:"ËÎÌו";
+}
+
+
+
+a.sitename:link { color:#067F99; }
+a.sitename:visited { color:#067F99; }
+a.sitename:active { color:#067F99; }
+
+
+.sitename A{
+color:#067F99;
+text-decoration: none;
+}
+.sitename A:visited{
+color:#067F99;
+text-decoration: none;
+}
+
+
+.dkbluehd A{
+color:#4799b6;
+}
+.dkbluehd A:VISITED{
+color:#85851F;
+}
+
+
+li {
+margin-left:-22px;
+list-style-image:url('/images/bullet.gif');
+font-family: verdana;
+color:#000000;
+font-weight: normal;
+font-size: 11px;
+}
+
+
+
+
+
+
+
+.bread {
+font-family: verdana;
+color:#999999;
+font-weight: normal;
+font-size: 10px;
+}
+.bread A {
+color:#4799B6;
+}
+.bread A:visited {
+color:#85851F;
+}
+
+
+
+.blacktext {
+font-family: verdana;
+color:#000000;
+font-weight: normal;
+font-size: 11px;
+}
+
+a.blacktext:link {
+color:#4799b6;
+}
+
+
+a.blacktext:visited {
+color:#85851F;
+}
+
+a.blacktext:active { color:#4799b6; }
+
+
+/*
+.blacktext a:link {color:#4799b6; }
+.blacktext a:visited {color:#85851F;}
+*/
+
+
+.callhd {
+font-family: verdana;
+color:#067F99;
+font-weight: bold;
+font-size: 14px;
+}
+
+.linkcl {
+font-family: verdana;
+color:#000000;
+font-weight: normal;
+font-size: 11px;
+}
+
+.title {
+font-family: verdana;
+color:#067F99;
+font-weight: bold;
+font-size:16px;
+}
+
+.title A{
+color:#4799B6;
+}
+
+
+.topnav {
+font-family: verdana;
+color:#ffffff;
+font-weight: bold;
+font-size: 11px;
+}
+.topnav A {
+color:#ffffff;
+text-decoration: none;
+}
+
+.topnav A:hover {
+text-decoration: underline;
+}
+
+.topnav A:visited {
+color:#ffffff;
+}
+
+.trade {
+font-family: TradeGothic_BldCondTwenty;
+color:#ffffff;
+font-weight: bold;
+font-size: .8em;
+text-decoration: none;
+}
+
+
+
+.footer {
+font-family: verdana;
+color:#666666;
+font-weight: none;
+font-size: 10px;
+}
+
+.footer A{
+color:#FFFFFF;
+}
+.footer A:visited{
+color:#FFFFFF;
+}
+
+
+.numberlist {
+font-family: verdana;
+color:#067F99;
+font-weight: bold;
+font-size: 11px;
+list-style-image: url('none');
+margin-left:-10px
+}
+
+.whitetext {
+font-family: verdana;
+color:#FFFFFF;
+font-weight: normal;
+font-size: 11px;
+}
+
+.boldwhite {
+font-family: verdana;
+color:#FFFFFF;
+font-weight: bold;
+font-size: 11px;
+}
+
+
+
+.dkbluehd {
+font-family: verdana;
+color:#067F99;
+font-weight: bold;
+font-size: 13.5px;
+}
+
+.greytext {
+font-family: verdana;
+color:#666666;
+font-weight: normal;
+font-size: .8em;
+}
+
+.rrhead {
+font-family: verdana;
+color:#4799b6;
+font-weight: bold;
+font-size: 10pt;
+}
+
+
+.arialnav {
+font-family: verdana;
+color:#000000;
+font-weight: bold;
+font-size: 11px;
+text-decoration: none;
+margin-top: 20px
+}
+
+a.arialnav:hover   {
+text-decoration: underline
+}
+
+
+
+
+

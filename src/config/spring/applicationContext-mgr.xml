@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- mgr -->
+	<bean id="mgrService" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="com.liveneo.plat.service.impl.mgr.MgrService">
+				<property name="mgrTempletDAO">
+					<ref bean="mgrTempletDAO" />
+				</property>
+				<property name="mgrWoDefineDAO">
+					<ref bean="mgrWoDefineDAO" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="MgrAction" class="com.liveneo.plat.web.action.mgr.MgrAction" singleton="false">
+		<property name="mgrService">
+			<ref bean="mgrService" />
+		</property>
+		<property name="bdDictService">
+			<ref bean="bdDictService" />
+		</property>
+	</bean>
+</beans>

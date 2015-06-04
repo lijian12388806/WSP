@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liveneo.plat.hibernate.dao">
+	<class
+		name="MgrTemplet"
+		table="mgr_templet"
+	>
+		<meta attribute="sync-DAO">true</meta>
+		<id
+			name="Id"
+			type="integer"
+			column="ID"
+		>
+			<generator class="native"/>
+		</id>
+
+		<property
+			name="TmpCode"
+			column="TMP_CODE"
+			type="string"
+			not-null="false"
+			length="32"
+		/>
+		<property
+			name="TmpName"
+			column="TMP_NAME"
+			type="string"
+			not-null="false"
+			length="125"
+		/>
+		<property
+			name="TmpType"
+			column="TMP_TYPE"
+			type="string"
+			not-null="false"
+			length="32"
+		/>
+		<property
+			name="TmpStatus"
+			column="TMP_STATUS"
+			type="string"
+			not-null="false"
+			length="32"
+		/>
+		<property
+			name="TmpBtn"
+			column="TMP_BTN"
+			type="string"
+			not-null="false"
+			length="125"
+		/>
+		<property
+			name="TmpListdata"
+			column="TMP_LISTDATA"
+			type="string"
+			not-null="false"
+			length="255"
+		/>
+		<property
+			name="TmpRelated"
+			column="TMP_RELATED"
+			type="string"
+			not-null="false"
+			length="32"
+		/>
+
+
+	</class>	
+</hibernate-mapping>

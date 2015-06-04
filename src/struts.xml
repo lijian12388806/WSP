@@ -1,0 +1,42 @@
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd" >
+<struts>
+	<constant name="struts.multipart.maxSize" value="1000000000" />
+
+	<!-- include节点是struts2中组件化的方式 可以将每个功能模块独立到一个xml配置文件中 然后用include节点引用 -->
+	<include file="struts-default.xml" />
+	<include file="config/struts/struts-base.xml" />
+	<include file="config/struts/struts-liuning.xml" />
+	<include file="config/struts/struts-mgr.xml" />
+	<include file="config/struts/struts-kbms.xml" />
+	<constant name="struts.custom.i18n.resources" value="globalMessages" />
+	<constant name="struts.configuration.xml.reload" value="false"></constant>
+	<constant name="struts.enable.SlashesInActionNames" value="false"></constant>
+	<package name="lcp-default" extends="struts-default" abstract="true">
+		<!-- 定义拦截器 -->
+		<interceptors>
+			<interceptor name="lcpInterceptor"
+				class="com.liveneo.plat.interceptor.AuthorityInterceptor" />
+			<interceptor-stack name="lcpInter-default">
+				<interceptor-ref name="lcpInterceptor" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="lcpInter-default" />
+		<!-- 全局results配置  -->
+		<global-results>
+			<result name="operationDone">/WEB-INF/pages/common/ajaxDone.jsp</result>
+			<result name="input">/WEB-INF/jsp${proxy.namespace}/${proxy.actionName}/${proxy.method}.jsp
+			</result>
+			<result name="login">/login.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="input"
+				exception="java.lang.NoSuchMethodException" />
+			<exception-mapping result="operationDone"
+				exception="java.lang.Exception" />
+		</global-exception-mappings>
+
+	</package>
+
+
+</struts>  

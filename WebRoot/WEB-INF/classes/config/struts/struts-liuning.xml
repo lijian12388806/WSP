@@ -1,0 +1,312 @@
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd" >
+<struts>
+	<!--工单管理  -->
+	<package name="workorder-info" extends="lcp-default">
+		<!-- 休息原因 -->
+		<action name="restReason" class="WorkOrderAction" method="restReason">
+			<result>/softphone/restReason.jsp
+			</result>
+		</action>
+		<!-- 模式 -->
+		<action name="dispatchMode" class="WorkOrderAction" method="dispatchMode">
+			<result>/softphone/dispatchMode.jsp
+			</result>
+		</action>
+		<action name="ListWorkorder" class="WorkOrderAction" method="listWorkorder">
+			<result name="returnToList">/WEB-INF/pages/workorder/queryWorkorderPage.jsp
+			</result>
+		</action>
+		<action name="listworkoder_his" class="WorkOrderAction" method="listWorkorder">
+			<result name="returnToList">/WEB-INF/pages/workorder/_history.jsp
+			</result>
+		</action>
+		<action name="listOrderdealinfo" class="WorkOrderAction" method="listOrderdealinfo">
+			<result name="returnToList">/WEB-INF/pages/workorder/_orderDealinfo.jsp
+			</result>
+		</action>
+		<action name="addWorkOrder" class="WorkOrderAction" method="addWorkOrder">
+			<result>/WEB-INF/pages/workorder/addWorkorder.jsp</result>
+		</action>
+		<action name="addnewWorkOrder" class="WorkOrderAction" method="addnewWorkOrder">
+			<result>/WEB-INF/pages/workorder/addWorkorder.jsp</result>
+		</action>
+		<action name="editWorkOrder" class="WorkOrderAction" method="editWorkOrder">
+			<result name="returnToEditPage">/WEB-INF/pages/workorder/addWorkorder.jsp</result>
+		</action>
+		<action name="editWorkOrderdealinfo" class="WorkOrderAction" method="editWorkOrderdealinfo">
+			<result name="returnToEditPage">/WEB-INF/pages/workorder/dhxclWorkorder.jsp</result>
+		</action>
+		<action name="saveWorkOrder" class="WorkOrderAction" method="saveWorkOrder">
+			<result type="redirect">editWorkOrderdealinfo.action</result>
+		</action>
+		<action name="deleteWorkOrder" class="WorkOrderAction" method="deleteWorkorder">
+			<result type="redirect">ListWorkorder.action</result>
+		</action>
+		<!-- 处理信息 -->
+		<action name="addOrderdealinfo" class="WorkOrderAction" method="addOrderdealinfo">
+			<result>/WEB-INF/pages/workorder/addOrderDealinfo.jsp</result>
+		</action>
+		<action name="saveOrderdealinfo" class="WorkOrderAction" method="saveOrderdealinfo">
+			<result name="a">/WEB-INF/pages/workorder/addOrderDealinfo.jsp</result>
+		</action>
+		<action name="editOrderdealinfo" class="WorkOrderAction" method="editOrderdealinfo">
+			<result name="returnToEditPage">/WEB-INF/pages/workorder/addOrderDealinfo.jsp</result>
+		</action>
+		<action name="deleteOrderdealinfo" class="WorkOrderAction" method="deleteOrderdealinfo">
+			<result type="redirect">editWorkOrderdealinfo.action</result>
+		</action>
+		
+		<!-- 下拉列表 -->
+		<action name="workitemCombox" class="WorkOrderAction" method="workitemCombox">
+			<result>/WEB-INF/pages/workorder/addWorkorder.jsp</result>
+		</action>
+		<!-- 高级检索 -->
+		<action name="searchJspPage" class="WorkOrderAction" method="searchJspPage">
+			<result>/WEB-INF/pages/workorder/search_workorderPage.jsp
+			</result>
+		</action>
+		<action name="ListIndexWorkorder" class="WorkOrderAction" method="listIndexWorkorder">
+			<result >/WEB-INF/jsp/woStatistics.jsp
+			</result>
+		</action>
+		<action name="saveIndexWorkOrder" class="WorkOrderAction" method="saveWorkOrder">
+			<result type="redirect">ListIndexWorkorder.action</result>
+		</action>
+		<!-- 报表 -->
+		<action name="listYearWclwo" class="WorkOrderAction" method="listYearWclwo">
+			<result >/WEB-INF/pages/workorder/statements/wclwo/queryYearWOPage.jsp
+			</result>
+		</action>
+		<action name="listMonthWclwo" class="WorkOrderAction" method="listMonthWclwo">
+			<result >/WEB-INF/pages/workorder/statements/wclwo/queryMonthWOPage.jsp
+			</result>
+		</action>
+		<action name="listDayWclwo" class="WorkOrderAction" method="listDayWclwo">
+			<result >/WEB-INF/pages/workorder/statements/wclwo/queryDayWOPage.jsp
+			</result>
+		</action>
+		<action name="listYearStwo" class="WorkOrderAction" method="listYearStwo">
+			<result >/WEB-INF/pages/workorder/statements/subtotals/queryYearStWOPage.jsp
+			</result>
+		</action>
+		<action name="listMonthStwo" class="WorkOrderAction" method="listMonthStwo">
+			<result >/WEB-INF/pages/workorder/statements/subtotals/queryMonthStWOPage.jsp
+			</result>
+		</action>
+		<action name="listDayStwo" class="WorkOrderAction" method="listDayStwo">
+			<result >/WEB-INF/pages/workorder/statements/subtotals/queryDayStWOPage.jsp
+			</result>
+		</action>
+		<action name="ListWorkratioReport" class="WorkReportAction" method="listWorkratioReport">
+			<result >/WEB-INF/pages/report/queryCountRatioReport.jsp
+			</result>
+		</action>
+	</package>
+	
+	<!--客户信息  -->
+	<package name="customer-info" extends="lcp-default">
+
+		<action name="ListCustomerinfo" class="CustomerinfoAction" method="listCustomerinfo">
+			<result name="returnToList">/WEB-INF/pages/customer/queryCustomerPage.jsp
+			</result>
+		</action>
+		<action name="addCustomerinfo" class="CustomerinfoAction" method="addCustomerinfo">
+			<result>/WEB-INF/pages/customer/addCustomer.jsp</result>
+
+		</action>
+		<action name="editCustomerinfo" class="CustomerinfoAction" method="editCustomerinfo">
+			<result name="returnToEditPage">/WEB-INF/pages/customer/addCustomer.jsp</result>
+
+		</action>
+		<action name="saveCustomerinfo" class="CustomerinfoAction" method="saveCustomerinfo">
+			<result type="redirect">ListCustomerinfo.action</result>
+
+		</action>
+		<action name="deleteCustomerinfo" class="CustomerinfoAction" method="deleteCustomerinfo">
+			<result type="redirect">ListCustomerinfo.action</result>
+		</action>
+		<!-- 下拉列表 -->
+		<action name="custlevelCombox" class="CustomerinfoAction" method="custlevelCombox">
+			<result>/WEB-INF/pages/customer/addCustomer.jsp</result>
+		</action>
+		<!-- 查找带回 -->
+		<action name="lookUpCustomer" class="CustomerinfoAction"
+			method="listCustomerinfo">
+			<result name="returnToList">/WEB-INF/pages/customer/lookupCustomerPage.jsp</result>
+		</action>
+		<action name="addNewCustomer" class="CustomerinfoAction" method="addNewCustomerinfo">
+			<result>/WEB-INF/pages/customer/addNewCustomer.jsp</result>
+		</action>
+		<action name="saveNewCustomerinfo" class="CustomerinfoAction" method="saveCustomerinfo">
+		</action>
+		<action name="addNewCustomer" class="CustomerinfoAction" method="addNewCustomerinfo">
+			<result>/WEB-INF/pages/customer/addNewCustomer.jsp</result>
+		</action>
+		<action name="saveNewCustomerinfo" class="CustomerinfoAction" method="saveCustomerinfo">
+		</action>
+		<!-- 客户电话号码 -->
+		<action name="ListCusphonelist" class="CustomerinfoAction" method="listCusphonelist">
+			<result name="returnToList">/WEB-INF/pages/customer/cusphonelist/queryCusphonelistPage.jsp
+			</result>
+		</action>
+		<action name="addCusphonelist" class="CustomerinfoAction" method="addCusphonelist">
+			<result>/WEB-INF/pages/customer/cusphonelist/addCusphonelist.jsp</result>
+
+		</action>
+		<action name="editCusphonelist" class="CustomerinfoAction" method="editCusphonelist">
+			<result name="returnToEditPage">/WEB-INF/pages/customer/cusphonelist/addCusphonelist.jsp</result>
+
+		</action>
+		<action name="saveCusphonelist" class="CustomerinfoAction" method="saveCusphonelist">
+			<result type="redirect">editCustomerinfo.action</result>
+
+		</action>
+		<action name="deleteCusphonelist" class="CustomerinfoAction" method="deleteCusphonelist">
+			<result type="redirect">editCustomerinfo.action</result>
+		</action>
+	</package>
+	<!--工作地点  -->
+	<package name="station-info" extends="lcp-default">
+
+		<action name="ListWorkstation" class="WorkstationAction" method="listWorkstation">
+			<result name="returnToList">/WEB-INF/pages/workstation/queryWorkstationPage.jsp
+			</result>
+		</action>
+		<action name="addWorkstation" class="WorkstationAction" method="addWorkstation">
+			<result>/WEB-INF/pages/workstation/addWorkstation.jsp</result>
+
+		</action>
+		<action name="editWorkstation" class="WorkstationAction" method="editWorkstation">
+			<result name="returnToEditPage">/WEB-INF/pages/workstation/addWorkstation.jsp</result>
+
+		</action>
+		<action name="saveWorkstation" class="WorkstationAction" method="saveWorkstation">
+			<result type="redirect">ListWorkstation.action</result>
+
+		</action>
+		<action name="deleteWorkstation" class="WorkstationAction" method="deleteWorkstation">
+			<result type="redirect">ListWorkstation.action</result>
+		</action>
+		<!-- 查找带回 -->
+		<action name="lookUpWorkstation" class="WorkstationAction"
+			method="listWorkstation">
+			<result name="returnToList">/WEB-INF/pages/workstation/lookupWorkstationPage.jsp</result>
+		</action>
+	</package>
+	
+	<!--IVR留言  -->
+	<package name="ivr-info" extends="lcp-default">
+		<action name="ListIvrvoice" class="IvrvoiceAction" method="listIvrvoice">
+			<result name="returnToList">/WEB-INF/pages/ivrvoice/listIvrVoice.jsp
+			</result>
+		</action>
+		<action name="playmusic" class="IvrvoiceAction" method="playmusic">
+			<result>/voice/announcement/musicplay/playmusic.jsp</result>
+		</action>
+		<action name="editVoice" class="IvrvoiceAction" method="editVoice">
+			<result name="returnToEditPage">/WEB-INF/pages/ivrvoice/editIvrvoice.jsp</result>
+		</action>
+		<action name="saveVoice" class="IvrvoiceAction" method="saveVoice">
+			<result type="redirect">ListIvrvoice.action</result>
+		</action>
+	</package>
+	<!--呼叫记录  -->
+	<package name="calldetail-info" extends="lcp-default">
+		<action name="addCallout" class="CalldetailAction" method="addCallout">
+		</action>
+		<action name="ListCalldetail" class="CalldetailAction" method="listCalldetail">
+			<result name="returnToList">/WEB-INF/pages/calldetail/listCalldetail.jsp
+			</result>
+		</action>
+	</package>
+	<!--满意度调查  -->
+	<package name="satscore-info" extends="lcp-default">
+
+		<action name="ListSatscore" class="SatscoreAction" method="listSatscore">
+			<result name="returnToList">/WEB-INF/pages/satscore/listsatscore.jsp
+			</result>
+		</action>
+	</package>
+	<!--任务管理  -->
+	<package name="job-info" extends="lcp-default">
+		<action name="ListJobmsg" class="JobmsgAction" method="listJobmsg">
+			<result name="returnToList">/WEB-INF/pages/jobmsg/queryJobmsgPage.jsp</result>
+		</action>
+		<action name="addJobmsg" class="JobmsgAction" method="addJobmsg">
+			<result>/WEB-INF/pages/jobmsg/addJobmsg.jsp</result>
+		</action>
+		<action name="editJobmsg" class="JobmsgAction" method="editJobmsg">
+			<result name="returnToEditPage">/WEB-INF/pages/jobmsg/addJobmsg.jsp</result>
+		</action>
+		<action name="saveJobmsg" class="JobmsgAction" method="saveJobmsg">
+			<result type="redirect">ListJobmsg.action</result>
+		</action>
+		<action name="deleteJobmsg" class="JobmsgAction" method="deleteJobmsg">
+			<result type="redirect">ListJobmsg.action</result>
+		</action>
+		<action name="rule" class="JobmsgAction" method="rule">
+			<result>/WEB-INF/pages/jobmsg/rule.jsp</result>
+		</action>
+	</package>
+	<!--工作日历  -->
+	<package name="workingcalendar-info" extends="lcp-default">
+		<action name="listWorkingcalendar" class="WorkingcalendarAction" method="listWorkingcalendar">
+			<result name="returnToList">/WEB-INF/pages/workingcalendar/queryWorkingcalendarPage.jsp
+			</result>
+		</action>
+		<action name="addWorkingcalendar" class="WorkingcalendarAction" method="addWorkingcalendar">
+			<result>/WEB-INF/pages/workingcalendar/addWorkingcalendar.jsp</result>
+
+		</action>
+		<action name="editWorkingcalendar" class="WorkingcalendarAction" method="editWorkingcalendar">
+			<result name="returnToEditPage">/WEB-INF/pages/workingcalendar/addWorkingcalendar.jsp</result>
+		</action>
+		<action name="saveWorkingcalendar" class="WorkingcalendarAction" method="saveWorkingcalendar">
+			<result type="redirect">ListWorkingcalendar.action</result>
+
+		</action>
+		<action name="deleteWorkingcalendar" class="WorkingcalendarAction" method="deleteWorkingcalendar">
+			<result type="redirect">ListWorkingcalendar.action</result>
+		</action>
+	</package>
+	<!-- 值班 -->
+	<package name="duty-pack" extends="lcp-default">
+		<action name="ListBdDuty" class="BdDictAction" method="listBdDict">
+			<result name="returnToList">
+				/WEB-INF/pages/duty/queryBdDutyPage.jsp
+			</result>
+		</action>
+		<action name="addBdDuty" class="BdDictAction" method="addBdDict">
+			<result name="returnToEditPage">
+				/WEB-INF/pages/duty/addBdDuty.jsp
+			</result>
+		</action>
+		<action name="editBdDuty" class="BdDictAction" method="editBdDict">
+			<result name="returnToEditPage">
+				/WEB-INF/pages/duty/addBdDuty.jsp
+			</result>
+		</action>
+		<action name="saveBdDuty" class="BdDictAction" method="saveBdDict">
+			<result type="redirect">ListBdDuty.action</result>
+		</action>
+		<action name="deleteBdDuty" class="BdDictAction" method="deleteBdDict">
+			<result type="redirect">ListBdDuty.action</result>
+		</action>
+		<action name="addBdDutydetail" class="BdDictAction" method="addBdDictdetail">
+			<result name="returnToEditPage">
+				/WEB-INF/pages/duty/addBdDutydetail.jsp
+			</result>
+		</action>
+		<action name="editBdDutydetail" class="BdDictAction" method="editBdDictdetail">
+			<result name="returnToEditPage">
+				/WEB-INF/pages/duty/addBdDutydetail.jsp
+			</result>
+		</action>
+		<action name="saveBdDutydetail" class="BdDictAction" method="saveBdDictdetail">
+			<result type="redirect">editBdDuty.action</result>
+		</action>
+		<action name="deleteBdDutydetail" class="BdDictAction" method="deleteBdDictdetail">
+			<result type="redirect">editBdDuty.action</result>
+		</action>
+	</package>
+</struts>

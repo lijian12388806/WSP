@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liveneo.plat.hibernate.dao">
+	<class
+		name="BdRole"
+		table="bd_role"
+	>
+		<meta attribute="sync-DAO">true</meta>
+		<id
+			name="Id"
+			type="integer"
+			column="pk_role"
+		>
+			<generator class="native"/>
+		</id>
+
+		<property
+			name="Rolename"
+			column="rolename"
+			type="string"
+			not-null="false"
+			length="20"
+		/>
+		<property
+			name="Description"
+			column="description"
+			type="string"
+			not-null="false"
+			length="50"
+		/>
+	
+
+		<set name="BdRolemenus" inverse="true">
+			<key column="pk_role"/>
+			<one-to-many class="BdRolemenu"/>
+		</set>
+
+		<set name="BdUserinforoles" inverse="true">
+			<key column="pk_role"/>
+			<one-to-many class="BdUserinforole"/>
+		</set>
+
+
+	</class>	
+</hibernate-mapping>

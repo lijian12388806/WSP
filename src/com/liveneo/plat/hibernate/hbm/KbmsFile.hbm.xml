@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liveneo.plat.hibernate.dao">
+	<class
+		name="KbmsFile"
+		table="kbms_file"
+	>
+		<meta attribute="sync-DAO">true</meta>
+		<id
+			name="Id"
+			type="integer"
+			column="ID"
+		>
+			<generator class="native"/>
+		</id>
+
+		<property
+			name="FileKlpId"
+			column="FILE_KLP_ID"
+			type="integer"
+			not-null="false"
+			length="10"
+		/>
+		<property
+			name="FileName"
+			column="FILE_NAME"
+			type="string"
+			not-null="false"
+			length="125"
+		/>
+		<property
+			name="FileNewname"
+			column="FILE_NEWNAME"
+			type="string"
+			not-null="false"
+			length="125"
+		/>
+		<property
+			name="FilePath"
+			column="FILE_PATH"
+			type="string"
+			not-null="false"
+			length="255"
+		/>
+		<property
+			name="FileSize"
+			column="FILE_SIZE"
+			type="string"
+			not-null="false"
+			length="32"
+		/>
+		<property
+			name="FileTime"
+			column="FILE_TIME"
+			type="timestamp"
+			not-null="false"
+		/>
+		<property
+			name="FileTmp1"
+			column="FILE_TMP1"
+			type="string"
+			not-null="false"
+			length="255"
+		/>
+		<property
+			name="FileTmp2"
+			column="FILE_TMP2"
+			type="string"
+			not-null="false"
+			length="255"
+		/>
+		<property
+			name="FileTmp3"
+			column="FILE_TMP3"
+			type="string"
+			not-null="false"
+			length="255"
+		/>
+
+
+	</class>	
+</hibernate-mapping>

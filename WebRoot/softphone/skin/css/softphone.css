@@ -1,0 +1,80 @@
+#softphonebar {
+    position: absolute;
+    top: 0px;
+    right: 5px;
+    width: 430px;
+    height: 46px;
+    text-align: right;
+}
+
+#softphonebar a img {
+	border:0px;
+}
+
+.softphone_timer {
+	width:200px;
+	background-image: url(../../skin/image/softphone/4.png);
+	background-repeat: no-repeat;
+	height:30px;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+a.softphone_menu {
+	TEXT-DECORATION: none;
+    padding:4px;
+    height:16px;
+	display:block;
+	font-size:12px;
+	background-color:#fff;
+	background-repeat:no-repeat;
+	cursor:hand;
+	font-size: 14px;
+	font-weight: bold;
+	width:84px;
+}
+a.softphone_menu:hover{
+	background-color:#eeeeee;
+}
+
+a.softphone_menu_1 {
+	TEXT-DECORATION: none;
+    padding:4px;
+    height:16px;
+	display:block;
+	font-size:12px;
+	background-color:#fff;
+	background-repeat:no-repeat;
+	cursor:hand;
+	font-size: 14px;
+	font-weight: bold;
+	width:159px;
+}
+a.softphone_menu_1:hover{
+	background-color:#eeeeee;
+}
+
+
+table.form_list{
+    FONT-SIZE: 12px;
+	LINE-HEIGHT: normal;
+	TEXT-DECORATION: none;
+	BACKGROUND-COLOR: #FFFFFF;
+	border-left:1px #7899D4 solid;
+	border-right:1px #7899D4 solid;
+	border-bottom:1px #7899D4 solid;
+	border-top:1px #7899D4 solid;
+	padding-top:0px;
+	padding-bottom:0px;
+	padding-left:1px;
+	padding-right:1px;
+	margin-left:0px;
+	margin-right:0px;
+	margin-top:0px;
+	margin-bottom:0px;
+	width:100%;
+}
+TD.grid {
+	FONT-SIZE: 12px;BORDER-BOTTOM: #cccccc 1px solid;PADDING-LEFT: 8px;
+}
+

@@ -1,0 +1,246 @@
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd" >
+<struts>
+	<package name="login-info" extends="struts-default">
+		<action name="login" class="LoginAction" method="login">
+			<param name="withoutAuthentication">true</param>
+			<result name="failed">/WEB-INF/jsp/login.jsp</result>
+			<result>/WEB-INF/jsp/index.jsp</result>
+
+		</action>
+		<action name="logout" class="LoginAction" method="logout">
+			<result>/WEB-INF/jsp/login.jsp</result>
+		</action>
+		<action name="piechart" class="LoginAction" method="piechart">
+			<result>/WEB-INF/jsp/playmusic.jsp</result>
+		</action>
+	</package>
+	<package name="json-info" extends="json-default">
+		<action name="sessionTimeout" class="com.liveneo.plat.web.action.LoginAction"
+			method="sessionTimeout">
+			<result type="json">
+				<param name=""></param>
+			</result>
+		</action>
+	</package>
+
+	<!--菜单信息  -->
+	<package name="basic-info" extends="lcp-default">
+		<action name="ListMenuinfoMain" class="MenuinfoAction" method="listMenuinfo">
+			<result name="returnToList">/WEB-INF/pages/base/menuinfo/queryMenuinfoPage_main.jsp
+			</result>
+		</action>
+		<action name="ListMenuinfo" class="MenuinfoAction" method="listMenuinfo">
+			<result name="returnToList">/WEB-INF/pages/base/menuinfo/queryMenuinfoPage.jsp
+			</result>
+		</action>
+		<action name="addMenuinfo" class="MenuinfoAction" method="addMenuinfo">
+			<result>/WEB-INF/pages/base/menuinfo/addMenuinfo.jsp</result>
+
+		</action>
+		<action name="editMenuinfo" class="MenuinfoAction" method="editMenuinfo">
+			<result name="returnToEditPage">/WEB-INF/pages/base/menuinfo/addMenuinfo.jsp</result>
+
+		</action>
+		<action name="saveMenuinfo" class="MenuinfoAction" method="saveMenuinfo">
+			<result type="redirect">ListMenuinfo.action</result>
+
+		</action>
+		<action name="deleteMenuinfo" class="MenuinfoAction" method="deleteMenuinfo">
+			<result type="redirect">ListMenuinfo.action</result>
+		</action>
+
+		<action name="changePwd" class="IsAdminAction" method="changePwd">
+			<result>/WEB-INF/pages/base/userinfo/changePassword.jsp</result>
+
+		</action>
+		<action name="savePwd" class="IsAdminAction" method="savePwd">
+			<result> /WEB-INF/jsp/index.jsp</result>
+		</action>
+		<action name="addAdminUserinfo" class="IsAdminAction" method="addAdminUserinfo">
+			<result>/WEB-INF/pages/base/userinfo/addAdminUserinfo.jsp</result>
+
+		</action>
+		<action name="editAdminUserinfo" class="IsAdminAction" method="editAdminUserinfo">
+			<result name="returnToEditPage">/WEB-INF/pages/base/userinfo/addAdminUserinfo.jsp
+			</result>
+		</action>
+		<action name="ListAdminUserinfo" class="IsAdminAction" method="listAdminUserinfo">
+			<result name="returnToList">/WEB-INF/pages/base/userinfo/queryAdminUserinfoPage.jsp
+			</result>
+		</action>
+		<action name="saveAdminUserinfo" class="IsAdminAction" method="saveAdminUserinfo">
+			<result type="redirect">ListAdminUserinfo.action</result>
+		</action>
+		<action name="deleteAdminUserinfo" class="IsAdminAction"
+			method="deleteAdminUserinfo">
+			<result type="redirect">ListAdminUserinfo.action</result>
+		</action>
+			
+	</package>
+
+	<!--文件上传  -->
+	<package name="upload-info" extends="lcp-default">
+
+		<action name="Listfile" class="UploadAction" method="listfile">
+			<result name="returnToList">/WEB-INF/pages/announcement/queryUploadFilePage.jsp
+			</result>
+		</action>
+		<action name="addfile" class="UploadAction" method="addfile">
+			<result>/WEB-INF/pages/announcement/uploadDialog.jsp</result>
+		</action>
+		<action name="savefile" class="UploadAction" method="savefile">
+			<result type="redirect">Listfile.action</result>
+		</action>
+		<action name="deletefile" class="UploadAction" method="deletefile">
+			<result type="redirect">Listfile.action</result>
+		</action>
+		<action name="selectholdmusic" class="UploadAction" method="selectholdmusic">
+			<result>/WEB-INF/pages/advanced/music/musicmanager.jsp</result>
+		</action>
+		<action name="saveholdmusic" class="UploadAction" method="saveholdmusic">
+			<result>/WEB-INF/pages/advanced/music/musicmanager.jsp</result>
+		</action>
+
+	</package>
+
+	<!--系统日志  -->
+	<package name="logmsg-info" extends="lcp-default">
+
+		<action name="ListLogmsg" class="LogmsgAction" method="listLogmsg">
+			<result name="returnToList">/WEB-INF/pages/base/logmsg/queryLogmsgPage.jsp
+			</result>
+		</action>
+		<action name="deleteLogmsg" class="LogmsgAction" method="deleteLogmsg">
+			<result type="redirect">ListLogmsg.action</result>
+		</action>
+
+	</package>
+
+
+
+
+	<!--角色信息  -->
+	<package name="role-info" extends="lcp-default">
+		<action name="ListRole" class="RoleAction" method="listRole">
+			<result name="returnToList">/WEB-INF/pages/base/role/queryRolePage.jsp</result>
+		</action>
+		<action name="addRole" class="RoleAction" method="addRole">
+			<result>/WEB-INF/pages/base/role/addRole.jsp</result>
+		</action>
+		<action name="editRole" class="RoleAction" method="editRole">
+			<result name="returnToEditPage">/WEB-INF/pages/base/role/addRole.jsp</result>
+		</action>
+		<action name="saveRole" class="RoleAction" method="saveRole">
+			<result type="redirect">ListRole.action</result>
+		</action>
+		<action name="deleteRole" class="RoleAction" method="deleteRole">
+			<result type="redirect">ListRole.action</result>
+		</action>
+	</package>
+
+	<package name="shares-pack" extends="lcp-default">
+		<action name="ListBdDict" class="BdDictAction" method="listBdDict">
+			<result name="returnToList">
+				/WEB-INF/pages/base/dict/queryBdDictPage.jsp
+			</result>
+		</action>
+		<action name="addBdDict" class="BdDictAction" method="addBdDict">
+			<result name="returnToEditPage">
+				/WEB-INF/pages/base/dict/addBdDict.jsp
+			</result>
+		</action>
+		<action name="editBdDict" class="BdDictAction" method="editBdDict">
+			<result name="returnToEditPage">
+				/WEB-INF/pages/base/dict/addBdDict.jsp
+			</result>
+		</action>
+		<action name="saveBdDict" class="BdDictAction" method="saveBdDict">
+			<result type="redirect">ListBdDict.action</result>
+		</action>
+		<action name="deleteBdDict" class="BdDictAction" method="deleteBdDict">
+			<result type="redirect">ListBdDict.action</result>
+		</action>
+		<action name="addBdDictdetail" class="BdDictAction" method="addBdDictdetail">
+			<result name="returnToEditPage">
+				/WEB-INF/pages/base/dict/addBdDictdetail.jsp
+			</result>
+		</action>
+		<action name="editBdDictdetail" class="BdDictAction" method="editBdDictdetail">
+			<result name="returnToEditPage">
+				/WEB-INF/pages/base/dict/addBdDictdetail.jsp
+			</result>
+		</action>
+		<action name="saveBdDictdetail" class="BdDictAction" method="saveBdDictdetail">
+			<result type="redirect">editBdDict.action</result>
+		</action>
+		<action name="deleteBdDictdetail" class="BdDictAction" method="deleteBdDictdetail">
+			<result type="redirect">editBdDict.action</result>
+		</action>
+		<action name="ListUserinfo" class="UserinfoAction" method="listUserinfo">
+			<result name="returnToList">
+				/WEB-INF/pages/base/userinfo/queryUserinfoPage.jsp
+			</result>
+		</action>
+		<action name="addUserinfo" class="UserinfoAction" method="addUserinfo">
+			<result name="returnToEditPage">
+				/WEB-INF/pages/base/userinfo/addUserinfo.jsp
+			</result>
+		</action>
+
+
+		<action name="batchUserinfo" class="UserinfoAction" method="batchUserinfo">
+			<result name="returnToBatchUser">
+				/WEB-INF/pages/base/userinfo/batchUserinfo.jsp
+			</result>
+		</action>
+		<action name="editUserinfo" class="UserinfoAction" method="editUserinfo">
+			<result name="returnToEditPage">
+				/WEB-INF/pages/base/userinfo/addUserinfo.jsp
+			</result>
+		</action>
+
+		<action name="saveUserinfo" class="UserinfoAction" method="saveUserinfo">
+			<result type="redirect">ListUserinfo.action</result>
+		</action>
+		<action name="exceldialog" class="UserinfoAction" method="exceldialog">
+			<result>/WEB-INF/pages/base/userinfo/uploadDialog.jsp</result>
+		</action>
+		<action name="importExcel" class="UserinfoAction"
+			method="importExcel">
+			<result type="redirect">ListUserinfo.action</result>
+		</action>
+
+		<action name="saveBatchUserinfo" class="UserinfoAction" method="saveBatchUserinfo">
+			<result type="redirect">ListUserinfo.action</result>
+		</action>
+		<action name="deleteUserinfo" class="UserinfoAction" method="deleteUserinfo">
+			<result >ListUserinfo.action</result>
+		</action>
+		<action name="dispatchRole" class="UserinfoAction" method="dispatchRole">
+			<result name="returnToEditPage">
+				/WEB-INF/pages/base/userinfo/addRoleForUser.jsp
+			</result>
+		</action>
+		<action name="saveUserRole" class="UserinfoAction" method="saveUserRole">
+			<result type="redirect">ListUserinfo.action</result>
+		</action>
+		<!-- 值班人 -->
+		<action name="onduty" class="UserinfoAction" method="onduty">
+			<result type="redirect">ListUserinfo.action</result>
+		</action>
+	</package>
+	<package name="download" extends="lcp-default">
+		<action name="download" class="com.liveneo.plat.web.action.DownloadAction">
+			<result type="stream">
+                 <!-- 下载文件类型定义 -->
+				<param name="contentType">application/octet-stream;charset=ISO8859-1</param>
+                 <!-- 下载文件输出流定义 -->
+				<param name="inputName">inputStream</param>
+				<param name="contentDisposition">attachment;filename="${downloadFileName}" 
+				</param>
+                 <!-- 下载文件的缓冲大小 -->
+				<param name="bufferSize">4096</param>
+			</result>
+		</action>
+	</package>
+</struts>

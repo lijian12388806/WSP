@@ -1,0 +1,21 @@
+.display_td {
+	BORDER-RIGHT: 1px dotted; 
+	PADDING-RIGHT: 4px; 
+	BORDER-TOP: 1px dotted; 
+	PADDING-LEFT: 4px; 
+	PADDING-BOTTOM: 2px; 
+	BORDER-LEFT: 1px dotted; 
+	PADDING-TOP: 2px;
+	BORDER-BOTTOM: 1px dotted	
+}
+
+.display_td_first {
+	BORDER-RIGHT: 1px dotted; 
+	PADDING-RIGHT: 4px; 
+	BORDER-TOP: 1px dotted; 
+	PADDING-LEFT: 4px; 
+	PADDING-BOTTOM: 2px; 
+	BORDER-LEFT: 1px dotted; 
+	PADDING-TOP: 2px; 
+	BORDER-BOTTOM: 1px dotted
+}

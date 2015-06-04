@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.liveneo.plat.hibernate.dao">
+	<class
+		name="BdRolemenu"
+		table="bd_rolemenu"
+	>
+		<meta attribute="sync-DAO">true</meta>
+		<id
+			name="Id"
+			type="integer"
+			column="pk_rolemenu"
+		>
+		<generator class="native"/>
+		</id>
+
+		<many-to-one
+			name="PkRole"
+			column="pk_role"
+			class="BdRole"
+			not-null="true"
+		>
+		</many-to-one>
+		<many-to-one
+			name="PkMenu"
+			column="pk_menu"
+			class="Menuinfo"
+			not-null="true"
+		>
+		</many-to-one>
+
+
+	</class>	
+</hibernate-mapping>
